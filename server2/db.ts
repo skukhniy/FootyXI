@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const pool = new Pool({
+export const pool = new Pool({
   user: process.env.db_user,
   password: process.env.db_password,
   host: 'localhost',
