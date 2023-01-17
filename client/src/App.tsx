@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Welcome from './pages/Welcome';
 import NavBar from './components/NavBar';
+import SquadBuilder from './pages/SquadBuilder';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Welcome />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/squad-builder" element={<SquadBuilder />} />
         </Routes>
       </BrowserRouter>
     </div>
