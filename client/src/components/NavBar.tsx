@@ -6,7 +6,7 @@ export default function NavBar() {
     setNav(!openNav);
   };
   return (
-    <div className="bg-green-800 p-3 text-white flex justify-between h-15">
+    <div className="bg-green-800 p-3 text-white flex justify-between h-15 sticky top-0 z-[60]">
       {/* Logo */}
       <div className="ml-5" id="logo">
         <h1>

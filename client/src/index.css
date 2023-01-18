@@ -20,6 +20,19 @@ h3 {
   @apply text-lg;
 }
 
+/* default button classes */
+.btn-primary {
+  @apply bg-green-600 p-3 px-6 pt-2 text-white font-bold rounded-full focus:outline-none focus:ring-4 focus:ring-green-300;
+}
+
+.btn-default {
+  @apply p-3 px-6 pt-2 text-white font-bold rounded-full;
+}
+.btn-select-db {
+  @apply p-3 px-6 pt-2 text-white font-bold rounded-full bg-green-600 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300;
+}
+
+/* Classes for mobile hamburger navbag */
 .hamburger {
   cursor: pointer;
   width: 24px;

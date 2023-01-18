@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SelectDbModal from '../components/SelectDbModal';
 
 export default function SquadBuilder() {
-  return <div>SquadBuilder</div>;
+  const [dbType, setDbType] = useState(null);
+
+  return (
+    <div>
+      <SelectDbModal dbType={dbType} />
+    </div>
+  );
 }
