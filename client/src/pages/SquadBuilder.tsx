@@ -6,7 +6,7 @@ export default function SquadBuilder() {
 
   return (
     <div>
-      <SelectDbModal dbType={dbType} />
+      <SelectDbModal dbType={dbType} setDbType={setDbType} />
     </div>
   );
 }

@@ -2,10 +2,21 @@ import React from 'react';
 
 interface SelectDBProps {
   dbType: string | null;
+  setDbType: Function;
 }
 
 export default function SelectDbModal(props: SelectDBProps) {
   const [showModal, setShowModal] = React.useState(true);
+
+  const toggleModal = () => {
+    setShowModal(false);
+  };
+  const setDB = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const target = e.target as HTMLButtonElement;
+    console.log(target.value);
+    props.setDbType(target.value);
+  };
+
   return (
     <>
       {showModal ? (
@@ -21,15 +32,32 @@ export default function SelectDbModal(props: SelectDBProps) {
                 </div>
                 {/* db buttons */}
                 <div className="space-x-10">
-                  <button className="btn-select-db ">Fifa 23</button>
-                  <button className="btn-select-db ">
+                  <button
+                    onClick={(e) => setDB(e)}
+                    className="btn-select-db "
+                    value="Fifa 23"
+                  >
+                    Fifa 23
+                  </button>
+                  <button
+                    onClick={(e) => setDB(e)}
+                    className="btn-select-db "
+                    value="Football Manager 22"
+                  >
                     Football Manager 22
                   </button>
-                  <button className="btn-select-db">Real Life</button>
+                  <button
+                    onClick={(e) => setDB(e)}
+                    className="btn-select-db"
+                    value="Real Life"
+                  >
+                    Real Life
+                  </button>
                 </div>
                 {/* Continue Button */}
                 <div className="text-center mt-10 flex justify-center">
                   <button
+                    onClick={toggleModal}
                     className="flex focus:outline-none text-white bg-green-600 hover:bg-green-800 font-medium 
                   rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "
                   >
