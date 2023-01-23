@@ -22,7 +22,7 @@ const app = (0, express_1.default)();
 // cors for connecting front end
 app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
-    res.send('Express + TypeScript Server');
+    res.send('Express + TypeScript Servers');
 });
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
