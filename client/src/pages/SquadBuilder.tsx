@@ -6,13 +6,13 @@ import SelectDbModal from '../components/SelectDbModal';
 
 export default function SquadBuilder() {
   const [dbType, setDbType] = useState(null);
-  const [formation, setFormation] = useState(null);
+  const [formation, setFormation] = useState('4-4-2');
 
   return (
     <div className="h-full flex flex-row">
       <SelectDbModal dbType={dbType} setDbType={setDbType} />
       <SBsideBar />
-      <FormationUi />
+      <FormationUi formation={formation} />
       <BenchBar />
     </div>
   );
