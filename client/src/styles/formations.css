@@ -21,9 +21,9 @@
 .f_4-4-2 {
   @apply grid grid-cols-7;
 }
-.f_4-4-2 .ls {
+/* .f_4-4-2 .ls {
   grid-column: 3;
-}
+} */
 .f_4-4-2 .rs {
   grid-column: 5/8;
 }
