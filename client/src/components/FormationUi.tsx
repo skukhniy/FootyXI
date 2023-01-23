@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/formations.css';
 
 export default function FormationUi() {
   return (
-    <div className="bg-green-300 w-3/4 h-full">
+    <div id="formationContainer">
       <div></div>
     </div>
   );

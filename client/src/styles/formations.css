@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#formationContainer {
+  @apply bg-green-300 w-3/4 h-full;
+}
+
+.4-4-2 {
+}
