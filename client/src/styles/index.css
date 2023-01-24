@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root,
+.root {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  @apply text-2xl;
+}
+h2 {
+  @apply text-xl;
+}
+h3 {
+  @apply text-lg;
+}
+
+/* default button classes */
+.btn-primary {
+  @apply bg-green-600 p-3 px-6 pt-2 text-white font-bold rounded-full focus:outline-none focus:ring-4 focus:ring-green-300;
+}
+
+.btn-default {
+  @apply p-3 px-6 pt-2 text-white font-bold rounded-full;
+}
+.btn-select-db {
+  @apply p-3 px-6 pt-2 text-white font-bold rounded-full bg-green-600 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300;
+}
+
+/* Classes for mobile hamburger navbag */
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+  align-items: center;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: white;
+  transform: rotate(0);
+  transition: all 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+.open {
+  transform: rotate(90deg);
+  transform: translateY(0px);
+}
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translate(6px);
+}
+.open .hamburger-middle {
+  display: none;
+}
+.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translate(-6px);
+}

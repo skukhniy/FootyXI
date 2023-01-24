@@ -1,0 +1,67 @@
+@tailwind components;
+@tailwind utilities;
+
+#formationContainer {
+  @apply bg-green-300 w-3/4 h-full flex justify-center pt-3;
+}
+
+/* flex styling */
+/* .f_4-4-2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.playerBlock {
+  @apply bg-blue-200 text-center;
+  height: 100px;
+  width: 100px;
+} */
+
+/* Grid stylings */
+.f_4-4-2 {
+  @apply grid grid-cols-7;
+}
+/* .f_4-4-2 .ls {
+  grid-column: 3;
+} */
+.f_4-4-2 .rs {
+  grid-column: 5/8;
+}
+.f_4-4-2 .rm {
+  grid-column: 1;
+}
+.f_4-4-2 .lcm {
+  grid-column: 3;
+}
+.f_4-4-2 .rcm {
+  grid-column: 5;
+}
+.f_4-4-2 .rm {
+  grid-column: 7;
+}
+.f_4-4-2 .lb {
+  grid-column: 1;
+}
+.f_4-4-2 .lcb {
+  grid-column: 3;
+}
+.f_4-4-2 .rcb {
+  grid-column: 5;
+}
+.f_4-4-2 .rb {
+  grid-column: 7;
+}
+.f_4-4-2 .gk {
+  grid-column: 4;
+}
+
+.playerBlock {
+  @apply bg-blue-200 text-center;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
+.emptySpace {
+  height: 100px;
+  width: 100px;
+}
