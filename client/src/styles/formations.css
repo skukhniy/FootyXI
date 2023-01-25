@@ -2,13 +2,14 @@
 @tailwind utilities;
 
 #formationContainer {
-  @apply bg-green-300 w-3/4 h-full flex justify-center pt-3;
+  @apply bg-green-300 w-3/4 flex justify-center pt-3;
+  height: 100%;
 }
 
 .playerBlock {
-  @apply bg-blue-200 text-center;
-  height: 100px;
-  width: 100px;
+  @apply bg-blue-200 text-center pt-2;
+  height: 50px;
+  width: 50px;
   border: 1px solid black;
 }
 .emptySpace {
@@ -26,7 +27,7 @@
   & .rs {
     grid-column: 5/8;
   }
-  & .rm {
+  & .lm {
     grid-column: 1;
   }
   & .lcm {
@@ -37,6 +38,44 @@
   }
   & .rm {
     grid-column: 7;
+  }
+  & .lb {
+    grid-column: 1;
+  }
+  & .lcb {
+    grid-column: 3;
+  }
+  & .rcb {
+    grid-column: 5;
+  }
+  & .rb {
+    grid-column: 7;
+  }
+  & .gk {
+    grid-column: 4;
+  }
+}
+
+.f_4-1-2-1-2 {
+  @apply grid grid-cols-7;
+
+  & .ls {
+    grid-column: 3;
+  }
+  & .rs {
+    grid-column: 5/8;
+  }
+  & .cam {
+    grid-column: 4/8;
+  }
+  & .lcm {
+    grid-column: 3;
+  }
+  & .rcm {
+    grid-column: 5/8;
+  }
+  & .cdm {
+    grid-column: 4/8;
   }
   & .lb {
     grid-column: 1;
