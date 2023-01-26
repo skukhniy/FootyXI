@@ -18,7 +18,7 @@
 }
 
 /* Grid stylings */
-.f_4-4-2 {
+.f_442 {
   @apply grid grid-cols-7;
 
   & .ls {

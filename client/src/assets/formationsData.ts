@@ -1,6 +1,11 @@
 // 4-atb
 
-export let formations = {
+interface formationTypes {
+  f_442: string[];
+  f_41212: string[];
+}
+
+export let formationPositions: formationTypes = {
   f_442: ['ls', 'rs', 'lm', 'lcm', 'rcm', 'rm', 'lb', 'lcb', 'rcb', 'rb', 'gk'],
   f_41212: [
     'ls',
@@ -15,4 +20,8 @@ export let formations = {
     'rb',
     'gk',
   ],
+};
+
+export let formations = {
+  fourATB: ['442', '41212'],
 };
