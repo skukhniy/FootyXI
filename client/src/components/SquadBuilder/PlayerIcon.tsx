@@ -6,10 +6,12 @@ interface positionProps {
 }
 
 export default function PlayerIcon(props: positionProps) {
+  const positionTitle = props.position.toUpperCase();
+
   return (
     <div className={`playerBlock ${props.position}`}>
       <img src={kitIcon}></img>
-      <span>{props.position}</span>
+      <span>{positionTitle}</span>
     </div>
   );
 }

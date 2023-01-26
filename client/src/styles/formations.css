@@ -2,10 +2,13 @@
 @tailwind utilities;
 
 #formationContainer {
-  @apply bg-green-300 w-3/4 flex justify-center pt-10 pb-10;
+  @apply bg-green-300 w-full flex justify-center pt-5 pb-10;
 }
 
 .formationGrid {
+  @apply grid;
+  justify-content: space-evenly;
+  width: 600px;
 }
 
 .playerBlock {
@@ -13,6 +16,10 @@
   img {
     height: 70px;
     width: 60px;
+  }
+  span {
+    position: relative;
+    top: -4px;
   }
 }
 
@@ -23,13 +30,11 @@
 
 /* Grid stylings */
 .f_442 {
-  @apply grid grid-cols-7;
-
   & .ls {
     grid-column: 3;
   }
   & .rs {
-    grid-column: 5/8;
+    grid-column: 5;
   }
   & .lm {
     grid-column: 1;
@@ -61,25 +66,23 @@
 }
 
 .f_41212N {
-  @apply grid grid-cols-7;
-
   & .ls {
     grid-column: 3;
   }
   & .rs {
-    grid-column: 5/8;
+    grid-column: 5;
   }
   & .cam {
-    grid-column: 4/8;
+    grid-column: 4;
   }
   & .lcm {
     grid-column: 3;
   }
   & .rcm {
-    grid-column: 5/8;
+    grid-column: 5;
   }
   & .cdm {
-    grid-column: 4/8;
+    grid-column: 4;
   }
   & .lb {
     grid-column: 1;
@@ -99,16 +102,14 @@
 }
 
 .f_41212W {
-  @apply grid grid-cols-7;
-
   & .ls {
     grid-column: 3;
   }
   & .rs {
-    grid-column: 5/8;
+    grid-column: 5;
   }
   & .cam {
-    grid-column: 4/8;
+    grid-column: 4;
   }
   & .lm {
     grid-column: 1;
@@ -117,7 +118,7 @@
     grid-column: 7;
   }
   & .cdm {
-    grid-column: 4/8;
+    grid-column: 4;
   }
   & .lb {
     grid-column: 1;
@@ -137,13 +138,11 @@
 }
 
 .f_4132 {
-  @apply grid grid-cols-7;
-
   & .ls {
     grid-column: 3;
   }
   & .rs {
-    grid-column: 5/8;
+    grid-column: 5;
   }
   & .lm {
     grid-column: 1;
@@ -155,7 +154,7 @@
     grid-column: 7;
   }
   & .cdm {
-    grid-column: 4/8;
+    grid-column: 4;
   }
   & .lb {
     grid-column: 1;
@@ -175,8 +174,6 @@
 }
 
 .f_4141 {
-  @apply grid grid-cols-7;
-
   & .st {
     grid-column: 4;
   }
@@ -213,13 +210,11 @@
 }
 
 .f_4222 {
-  @apply grid grid-cols-7;
-
   & .ls {
     grid-column: 3;
   }
   & .rs {
-    grid-column: 5/8;
+    grid-column: 5;
   }
   & .lam {
     grid-column: 3;
