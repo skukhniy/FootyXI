@@ -171,3 +171,41 @@
     grid-column: 4;
   }
 }
+
+.f_4141 {
+  @apply grid grid-cols-7;
+
+  & .st {
+    grid-column: 4;
+  }
+  & .lm {
+    grid-column: 1;
+  }
+  & .lcm {
+    grid-column: 3;
+  }
+  & .rcm {
+    grid-column: 5;
+  }
+  & .rm {
+    grid-column: 7;
+  }
+  & .cdm {
+    grid-column: 4;
+  }
+  & .lb {
+    grid-column: 1;
+  }
+  & .lcb {
+    grid-column: 3;
+  }
+  & .rcb {
+    grid-column: 5;
+  }
+  & .rb {
+    grid-column: 7;
+  }
+  & .gk {
+    grid-column: 4;
+  }
+}

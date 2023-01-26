@@ -36,6 +36,19 @@ export let formationPositions = {
     'gk',
   ],
   f_4132: ['ls', 'rs', 'lm', 'cm', 'rm', 'cdm', 'lb', 'lcb', 'rcb', 'rb', 'gk'],
+  f_4141: [
+    'st',
+    'lm',
+    'lcm',
+    'rcm',
+    'rm',
+    'cdm',
+    'lb',
+    'lcb',
+    'rcb',
+    'rb',
+    'gk',
+  ],
 };
 
-export let formations = ['442', '41212N', '41212W', '4132'];
+export let formations = ['442', '41212N', '41212W', '4132', '4141'];
