@@ -2,8 +2,10 @@
 @tailwind utilities;
 
 #formationContainer {
-  @apply bg-green-300 w-3/4 flex justify-center pt-20 pb-20;
-  height: 100%;
+  @apply bg-green-300 w-3/4 flex justify-center pt-10 pb-10;
+}
+
+.formationGrid {
 }
 
 .playerBlock {
@@ -108,6 +110,44 @@
   }
   & .lm {
     grid-column: 1;
+  }
+  & .rm {
+    grid-column: 7;
+  }
+  & .cdm {
+    grid-column: 4/8;
+  }
+  & .lb {
+    grid-column: 1;
+  }
+  & .lcb {
+    grid-column: 3;
+  }
+  & .rcb {
+    grid-column: 5;
+  }
+  & .rb {
+    grid-column: 7;
+  }
+  & .gk {
+    grid-column: 4;
+  }
+}
+
+.f_4132 {
+  @apply grid grid-cols-7;
+
+  & .ls {
+    grid-column: 3;
+  }
+  & .rs {
+    grid-column: 5/8;
+  }
+  & .lm {
+    grid-column: 1;
+  }
+  & .cm {
+    grid-column: 4;
   }
   & .rm {
     grid-column: 7;
