@@ -9,11 +9,13 @@
 }
 
 .playerBlock {
-  @apply bg-blue-200 text-center pt-2;
-  height: 50px;
-  width: 50px;
-  border: 1px solid black;
+  @apply text-center pt-2;
+  img {
+    height: 70px;
+    width: 60px;
+  }
 }
+
 .emptySpace {
   height: 100px;
   width: 100px;
@@ -192,6 +194,44 @@
   }
   & .cdm {
     grid-column: 4;
+  }
+  & .lb {
+    grid-column: 1;
+  }
+  & .lcb {
+    grid-column: 3;
+  }
+  & .rcb {
+    grid-column: 5;
+  }
+  & .rb {
+    grid-column: 7;
+  }
+  & .gk {
+    grid-column: 4;
+  }
+}
+
+.f_4222 {
+  @apply grid grid-cols-7;
+
+  & .ls {
+    grid-column: 3;
+  }
+  & .rs {
+    grid-column: 5/8;
+  }
+  & .lam {
+    grid-column: 3;
+  }
+  & .ram {
+    grid-column: 5;
+  }
+  & .ldm {
+    grid-column: 3;
+  }
+  & .rdm {
+    grid-column: 5;
   }
   & .lb {
     grid-column: 1;
