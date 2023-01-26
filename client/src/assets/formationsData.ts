@@ -22,6 +22,4 @@ export let formationPositions: formationTypes = {
   ],
 };
 
-export let formations = {
-  fourATB: ['442', '41212'],
-};
+export let formations = ['442', '41212'];

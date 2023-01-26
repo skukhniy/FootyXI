@@ -1,4 +1,5 @@
 import React from 'react';
+import { formations } from '../../assets/formationsData';
 
 interface formationProps {
   formation: string;
@@ -6,7 +7,9 @@ interface formationProps {
 }
 
 export default function SBsideBar(props: formationProps) {
-  const formationOptions = null;
+  const formationOptions = formations.map((formation) => (
+    <option value={formation}>{formation}</option>
+  ));
 
   return (
     <div className="w-[200px] h-full bg-gray-200 p-2">
@@ -15,13 +18,10 @@ export default function SBsideBar(props: formationProps) {
       <select
         id="countries"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-1"
+        onChange={(e) => props.setFormation(e.target.value)}
       >
         <option selected>Choose a formation</option>
         {formationOptions}
-        {/* <option value="US">United States</option>
-        <option value="CA">Canada</option>
-        <option value="FR">France</option>
-        <option value="DE">Germany</option> */}
       </select>
     </div>
   );
