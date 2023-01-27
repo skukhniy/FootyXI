@@ -5,6 +5,7 @@ import PlayerIcon from './PlayerIcon';
 
 interface formationProps {
   formation: string;
+  setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function FormationUi(props: formationProps) {
@@ -15,7 +16,10 @@ export default function FormationUi(props: formationProps) {
     formationPositions[formationKey as keyof typeof formationPositions];
   // create each div for each player position in the fomration
   const playerDivs = positionArray.map((position) => (
-    <PlayerIcon position={position} />
+    <PlayerIcon
+      position={position}
+      setAddPlayerModal={props.setAddPlayerModal}
+    />
   ));
 
   return (

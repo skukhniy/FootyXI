@@ -1,8 +1,15 @@
 import React from 'react';
 import SearchPlayer from './SearchPlayer';
 
-export default function AddPlayer() {
-  const showModal = true;
+interface AddPlayerProps {
+  showAddPlayer: boolean;
+  setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function AddPlayer(props: AddPlayerProps) {
+  const toggleModal = () => {
+    props.setAddPlayerModal(true);
+  };
   return (
     <>
       {/* overlaying modal container, goes over the entire screen */}
@@ -12,12 +19,14 @@ export default function AddPlayer() {
           {/* content child container ( what gives the box shape) */}
           <div className="contentChild">
             {/* content goes in this div */}
-            <div>{<SearchPlayer />}</div>
+            <div>
+              <SearchPlayer />
+            </div>
           </div>
         </div>
       </div>
       {/* Opacity for the background */}
-      <div className="modalBackground"></div>
+      <div className="modalBackground" onClick={toggleModal}></div>
     </>
   );
 }

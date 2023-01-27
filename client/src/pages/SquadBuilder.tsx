@@ -9,13 +9,23 @@ import SelectDbModal from '../components/SquadBuilder/SelectDbModal';
 export default function SquadBuilder() {
   const [dbType, setDbType] = useState(null);
   const [formation, setFormation] = useState('442');
+  const [showAddPlayer, setAddPlayerModal] = useState(false);
 
   return (
     <div className="h-[calc(100%_-_56px)] flex flex-row">
       <SelectDbModal dbType={dbType} setDbType={setDbType} />
-      <AddPlayer />
+      {/* Conditional for the Add Player Modal */}
+      {showAddPlayer ? (
+        <AddPlayer
+          showAddPlayer={showAddPlayer}
+          setAddPlayerModal={setAddPlayerModal}
+        />
+      ) : null}
       <OptionsBar formation={formation} setFormation={setFormation} />
-      <FormationUi formation={formation} />
+      <FormationUi
+        formation={formation}
+        setAddPlayerModal={setAddPlayerModal}
+      />
       <BenchBar />
     </div>
   );
