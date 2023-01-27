@@ -9,7 +9,7 @@ export default function SquadBuilder() {
   const [formation, setFormation] = useState('442');
 
   return (
-    <div className="h-full flex flex-row">
+    <div className="h-[calc(100%_-_56px)] flex flex-row">
       <SelectDbModal dbType={dbType} setDbType={setDbType} />
       <SBsideBar formation={formation} setFormation={setFormation} />
       <FormationUi formation={formation} />

@@ -11,7 +11,15 @@ export default function PlayerIcon(props: positionProps) {
   return (
     <div className={`playerBlock ${props.position}`}>
       <img src={kitIcon}></img>
-      <span>{positionTitle}</span>
+      <p>{positionTitle}</p>
+      {/* <select>
+        <option selected></option>
+        <option>Kane</option>
+        <option>Son</option>
+        <option>Deki</option>
+        <option>Romero</option>
+        <option>Porro</option>
+      </select> */}
     </div>
   );
 }

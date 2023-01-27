@@ -3,7 +3,7 @@
 
 #formationContainer {
   @apply bg-green-300 w-full flex justify-center pt-5 pb-10;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .formationGrid {
@@ -14,6 +14,8 @@
 
 .playerBlock {
   @apply text-center pt-2;
+  position: relative;
+
   img {
     height: 70px;
     width: 60px;
@@ -114,27 +116,35 @@
   }
   & .lm {
     grid-column: 1;
+    top: -20px;
   }
   & .rm {
     grid-column: 7;
+    top: -20px;
   }
   & .cdm {
     grid-column: 4;
+    top: -40px;
   }
   & .lb {
     grid-column: 1;
+    top: -40px;
   }
   & .lcb {
     grid-column: 3;
+    top: -40px;
   }
   & .rcb {
     grid-column: 5;
+    top: -40px;
   }
   & .rb {
     grid-column: 7;
+    top: -40px;
   }
   & .gk {
     grid-column: 4;
+    top: -40px;
   }
 }
 

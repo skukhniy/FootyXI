@@ -6,7 +6,7 @@ export default function NavBar() {
     setNav(!openNav);
   };
   return (
-    <div className="bg-green-800 p-3 text-white flex justify-between h-15 sticky top-0 z-[60]">
+    <nav className="bg-green-800 p-3 text-white flex justify-between h-15 sticky top-0 z-[60]">
       {/* Logo */}
       <div className="ml-5" id="logo">
         <h1>
@@ -57,6 +57,6 @@ export default function NavBar() {
         <span className="hamburger-middle"></span>
         <span className="hamburger-bottom"></span>
       </button>
-    </div>
+    </nav>
   );
 }
