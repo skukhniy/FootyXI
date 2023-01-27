@@ -3,7 +3,7 @@
 
 #formationContainer {
   @apply bg-green-300 w-full flex justify-center pt-5 pb-10;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .formationGrid {
