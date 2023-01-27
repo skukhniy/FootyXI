@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import '../styles/modals.css';
+import AddPlayer from '../components/SquadBuilder/AddPlayer';
 import BenchBar from '../components/SquadBuilder/BenchBar';
 import FormationUi from '../components/SquadBuilder/FormationUi';
-import SBsideBar from '../components/SquadBuilder/SBsideBar';
+import OptionsBar from '../components/SquadBuilder/OptionsBar';
 import SelectDbModal from '../components/SquadBuilder/SelectDbModal';
 
 export default function SquadBuilder() {
@@ -11,7 +13,8 @@ export default function SquadBuilder() {
   return (
     <div className="h-[calc(100%_-_56px)] flex flex-row">
       <SelectDbModal dbType={dbType} setDbType={setDbType} />
-      <SBsideBar formation={formation} setFormation={setFormation} />
+      <AddPlayer />
+      <OptionsBar formation={formation} setFormation={setFormation} />
       <FormationUi formation={formation} />
       <BenchBar />
     </div>

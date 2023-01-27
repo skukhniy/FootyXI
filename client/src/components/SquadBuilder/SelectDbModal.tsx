@@ -6,11 +6,12 @@ interface SelectDBProps {
 }
 
 export default function SelectDbModal(props: SelectDBProps) {
-  const [showModal, setShowModal] = React.useState(true);
+  const [showModal, setShowModal] = React.useState(false);
 
   const toggleModal = () => {
     setShowModal(false);
   };
+
   const setDB = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const target = e.target as HTMLButtonElement;
     console.log(target.value);
@@ -21,10 +22,10 @@ export default function SelectDbModal(props: SelectDBProps) {
     <>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content container*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-5">
+          <div className="modal inset-0">
+            <div className="contentParent">
+              <div className="contentChild">
+                {/*content div*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-slate-500 text-lg leading-relaxed text-center">
                     Select which database to use for your squad.
@@ -35,9 +36,9 @@ export default function SelectDbModal(props: SelectDBProps) {
                   <button
                     onClick={(e) => setDB(e)}
                     className="btn-select-db "
-                    value="Fifa 23"
+                    value="FIFA 23"
                   >
-                    Fifa 23
+                    FIFA 23
                   </button>
                   <button
                     onClick={(e) => setDB(e)}
@@ -80,7 +81,7 @@ export default function SelectDbModal(props: SelectDBProps) {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="modalBackground"></div>
         </>
       ) : null}
     </>

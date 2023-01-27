@@ -7,10 +7,15 @@ interface positionProps {
 
 export default function PlayerIcon(props: positionProps) {
   const positionTitle = props.position.toUpperCase();
+  const addPlayer = () => {};
 
   return (
     <div className={`playerBlock ${props.position}`}>
-      <img src={kitIcon}></img>
+      <img
+        className="hover:cursor-pointer "
+        onClick={addPlayer}
+        src={kitIcon}
+      ></img>
       <p>{positionTitle}</p>
       {/* <select>
         <option selected></option>
