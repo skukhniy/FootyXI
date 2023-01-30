@@ -327,3 +327,39 @@
     grid-column: 4;
   }
 }
+
+.f_424 {
+  & .ls {
+    grid-column: 3;
+  }
+  & .rs {
+    grid-column: 5;
+  }
+  & .lw {
+    grid-column: 1;
+  }
+  & .rw {
+    grid-column: 7;
+  }
+  & .lcm {
+    grid-column: 3;
+  }
+  & .rcm {
+    grid-column: 5;
+  }
+  & .lb {
+    grid-column: 1;
+  }
+  & .lcb {
+    grid-column: 3;
+  }
+  & .rcb {
+    grid-column: 5;
+  }
+  & .rb {
+    grid-column: 7;
+  }
+  & .gk {
+    grid-column: 4;
+  }
+}

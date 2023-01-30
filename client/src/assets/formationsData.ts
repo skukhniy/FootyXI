@@ -88,6 +88,7 @@ export let formationPositions = {
     'rb',
     'gk',
   ],
+  f_424: ['ls', 'rs', 'lw', 'rw', 'lcm', 'rcm', 'lb', 'lcb', 'rcb', 'rb', 'gk'],
 };
 
 export let formations = [
@@ -99,4 +100,5 @@ export let formations = [
   '4222',
   '4231N',
   '4231W',
+  '424',
 ];
