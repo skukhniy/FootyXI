@@ -255,3 +255,39 @@
     grid-column: 4;
   }
 }
+
+.f_4231N {
+  & .st {
+    grid-column: 4;
+  }
+  & .lam {
+    grid-column: 2;
+  }
+  & .cam {
+    grid-column: 4;
+  }
+  & .ram {
+    grid-column: 6;
+  }
+  & .ldm {
+    grid-column: 3;
+  }
+  & .rdm {
+    grid-column: 5;
+  }
+  & .lb {
+    grid-column: 1;
+  }
+  & .lcb {
+    grid-column: 3;
+  }
+  & .rcb {
+    grid-column: 5;
+  }
+  & .rb {
+    grid-column: 7;
+  }
+  & .gk {
+    grid-column: 4;
+  }
+}
