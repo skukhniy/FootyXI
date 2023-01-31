@@ -8,7 +8,7 @@ interface AddPlayerProps {
 
 export default function AddPlayer(props: AddPlayerProps) {
   const toggleModal = () => {
-    props.setAddPlayerModal(true);
+    props.setAddPlayerModal(false);
   };
   return (
     <>
