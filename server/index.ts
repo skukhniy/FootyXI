@@ -18,7 +18,11 @@ const port = process.env.port;
 // init express
 const app = express();
 
-// routers
+// router variables
+const playersRouter = require('./routes/players');
+
+// init routers
+app.use('/players', playersRouter);
 
 // cors for connecting front end
 app.use(cors());
