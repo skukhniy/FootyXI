@@ -18,7 +18,10 @@ dotenv_1.default.config();
 const port = process.env.port;
 // init express
 const app = (0, express_1.default)();
-// routers
+// router variables
+const playersRouter = require('./routes/players');
+// init routers
+app.use('/players', playersRouter);
 // cors for connecting front end
 app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
