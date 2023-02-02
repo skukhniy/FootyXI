@@ -26,14 +26,15 @@ export default function SearchResults({ searchResults }: resultProps) {
   ));
   return (
     <div id="searchResults" className=" h-[500px] overflow-y-scroll">
-      {/* <div className="grid">
-        <p>Player Name</p>
-        <p>Position</p>
-        <p>Overall</p>
-        <p>Potential</p>
-        <p>Nation</p>
-        <p>Add</p>
-      </div> */}
+      <div className="grid grid-cols-7 text-center">
+        <span></span>
+        <span className="">Name</span>
+        <span>Position</span>
+        <span>Overall</span>
+        <span>Potential</span>
+        <span>Nation</span>
+        <span>Add</span>
+      </div>
       {playerCards}
     </div>
   );
