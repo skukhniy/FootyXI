@@ -18,10 +18,23 @@ interface playerObjectInfo {
 }
 
 export default function SearchResults({ searchResults }: resultProps) {
-  console.log(searchResults[0]);
+  const playerCards = searchResults.map((playerInfo) => (
+    <div>
+      <SearchResultPlayerCard playerInfo={playerInfo} />
+      <hr className="w-full mb-8" />
+    </div>
+  ));
   return (
-    <div id="searchResults">
-      <SearchResultPlayerCard playerInfo={searchResults[0]} />
+    <div id="searchResults" className=" h-[500px] overflow-y-scroll">
+      {/* <div className="grid">
+        <p>Player Name</p>
+        <p>Position</p>
+        <p>Overall</p>
+        <p>Potential</p>
+        <p>Nation</p>
+        <p>Add</p>
+      </div> */}
+      {playerCards}
     </div>
   );
 }

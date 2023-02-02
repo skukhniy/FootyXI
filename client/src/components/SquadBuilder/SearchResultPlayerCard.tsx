@@ -19,8 +19,11 @@ export default function SearchResultPlayerCard({ playerInfo }: playerInfoProp) {
   console.log(`playerInfo`);
   console.log(playerInfo);
   return (
-    <div className="flex justify-between items-center">
-      <img id="playerPic" src={playerInfo.image_link}></img>
+    <div className="flex justify-between items-center pb-8">
+      <img
+        id="playerPic"
+        src={playerInfo.image_link ? playerInfo.image_link : ''}
+      ></img>
       <h3 id="fullName">{playerInfo.known_as}</h3>
       <h3 id="position">{playerInfo.best_position}</h3>
       <h3 id="overall">{playerInfo.overall}</h3>
