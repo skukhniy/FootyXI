@@ -9,16 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// // get all posts
-// exports.getPosts = async (req, res) => {
-// 	try {
-// 		const posts = await Post.find();
-// 		res.json(posts);
-// 	} catch (err) {
-// 		res.status(500).json({ message: err.message });
-// 	}
-// 	// res.json("Get Posts");
-// };
+const db_1 = require("../db");
 function getErrorMessage(error) {
     if (error instanceof Error)
         return error.message;
@@ -29,7 +20,9 @@ function getErrorMessage(error) {
 // player search - squad builder
 exports.playerSearch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.json('player search');
+        const keywords = `%${req.body.keywords}%`;
+        const searchResult = yield db_1.pool.query('SELECT full_name, known_as, overall, potential, best_position, image_link, club_name, national_team_image_link FROM fifa23 WHERE full_name LIKE $1', [keywords]);
+        res.json(searchResult.rows[0]);
     }
     catch (error) {
         res.status(500).json({ message: getErrorMessage(error) });

@@ -3,29 +3,27 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { pool } from './db';
 
-// const cors = require('cors');
-// const pool = require('./db');
-// var createError = require('http-errors');
-// var path = require('path');
-// var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
-// const dotenv = require('dotenv');
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  return String(error);
+}
+
+// init express
+const app = express();
+
+// cors for connecting front end / express.json=
+app.use(cors());
+app.use(express.json());
 
 // grab secret variables from .env
 dotenv.config();
 const port = process.env.port;
-
-// init express
-const app = express();
 
 // router variables
 const playersRouter = require('./routes/players');
 
 // init routers
 app.use('/players', playersRouter);
-
-// cors for connecting front end
-app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Servers');
