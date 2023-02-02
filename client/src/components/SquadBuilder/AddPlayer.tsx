@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchPlayer from './SearchPlayer';
+import SearchResults from './SearchResults';
 
 interface AddPlayerProps {
   showAddPlayer: boolean;
@@ -7,9 +8,13 @@ interface AddPlayerProps {
 }
 
 export default function AddPlayer(props: AddPlayerProps) {
+  const [searchResults, setSearchResults] = useState([]);
   const toggleModal = () => {
     props.setAddPlayerModal(false);
   };
+
+  const hasResults = Object.keys(searchResults).length > 0;
+
   return (
     <>
       {/* overlaying modal container, goes over the entire screen */}
@@ -20,7 +25,13 @@ export default function AddPlayer(props: AddPlayerProps) {
           <div className="contentChild">
             {/* content goes in this div */}
             <div>
-              <SearchPlayer />
+              <SearchPlayer setSearchResults={setSearchResults} />
+              {/* conditional render for the search results section */}
+              {hasResults ? (
+                <SearchResults searchResults={searchResults} />
+              ) : (
+                ''
+              )}
             </div>
           </div>
         </div>

@@ -1,25 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
+// TODO: figure out what type to place. Kept getting an error so just put any for now. Probably should be array[playerpropobjs] or smth.
+interface searchProps {
+  setSearchResults: React.Dispatch<React.SetStateAction<any>>;
+}
 
-export default function SearchPlayer() {
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  return String(error);
+}
+export default function SearchPlayer(props: searchProps) {
+  const [keywords, setKeywords] = useState('');
+
+  const cleanQueryString = () => {
+    return keywords.replace(' ', '+').trim();
+  };
+
+  const getSearchResults = async () => {
+    console.log('click');
+    try {
+      const response = await fetch(
+        `http://localhost:4007/players/search?name=${cleanQueryString()}`
+      );
+      const jsonData = await response.json();
+      console.log(jsonData);
+      props.setSearchResults(jsonData);
+    } catch (error) {
+      console.log(getErrorMessage(error));
+    }
+  };
+
   return (
     <div className="input-group relative flex items-stretch w-full mb-4">
       <input
         type="search"
-        className="form-control relative flex-auto md:w-[500px] w-full block px-3 py-1.5 text-base 
-        font-normal text-gray-700 bg-white bg-clip-padding border border-solid 
-        border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 
-        focus:bg-white focus:border-green-600 focus:outline-none"
+        className="form-control relative flex-auto md:w-[500px] w-full block px-3 py-1.5 text-base
+          font-normal text-gray-700 bg-white bg-clip-padding border border-solid
+          border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700
+          focus:bg-white focus:border-green-600 focus:outline-none"
         placeholder="Search"
         aria-label="Search"
         aria-describedby="button-addon2"
+        onChange={(e) => setKeywords(e.target.value)}
       />
       <button
-        className="btn inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs 
-        leading-tight uppercase rounded shadow-md hover:bg-green-700 
-        hover:shadow-lg focus:bg-green-700  focus:shadow-lg focus:outline-none 
-        focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out flex items-center"
+        className="btn inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs
+          leading-tight uppercase rounded shadow-md hover:bg-green-700
+          hover:shadow-lg focus:bg-green-700  focus:shadow-lg focus:outline-none
+          focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out flex items-center"
         type="button"
         id="button-addon2"
+        onClick={getSearchResults}
       >
         <svg
           aria-hidden="true"
