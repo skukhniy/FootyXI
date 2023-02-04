@@ -1,9 +1,6 @@
 import React from 'react';
 import SearchResultPlayerCard from './SearchResultPlayerCard';
-
-interface firstTeamObject {
-  [key: string | number]: string;
-}
+import { firstTeamObject } from '../../../assets/interfaces';
 
 interface resultProps {
   searchResults: Array<playerObjectInfo>;

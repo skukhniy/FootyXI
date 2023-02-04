@@ -6,10 +6,7 @@ import FormationUi from '../components/SquadBuilder/FormationUi';
 import OptionsBar from '../components/SquadBuilder/OptionsBar';
 import SelectDbModal from '../components/SquadBuilder/SelectDbModal';
 import { formationPositions } from '../assets/formationsData';
-
-interface firstTeamObject {
-  [key: string | number]: string;
-}
+import { firstTeamObject } from '../assets/interfaces';
 
 export default function SquadBuilder() {
   const [dbType, setDbType] = useState(null);
@@ -17,17 +14,17 @@ export default function SquadBuilder() {
   const [showAddPlayer, setAddPlayerModal] = useState(false);
   const [currentPosition, setCurrentPosition] = useState('');
 
-  // create template for the first team state
-  // will create dynamic keys for each position
   const formationKey = `f_${formation}`;
-  let firstTeamTemplate = {} as firstTeamObject;
-  formationPositions[formationKey as keyof typeof formationPositions].forEach(
-    (position) => {
-      firstTeamTemplate[position] = '';
-    }
-  );
+  const formationArray =
+    formationPositions[formationKey as keyof typeof formationPositions];
+  const [allPositions, setAllPositions] = useState(formationArray);
 
+  let firstTeamTemplate = {} as firstTeamObject;
+  formationArray.forEach((position) => {
+    firstTeamTemplate[position] = { name: '', position: '', ovr: 0 };
+  });
   const [firstTeam, setFirstTeam] = useState(firstTeamTemplate);
+
   console.log(firstTeam);
 
   return (
@@ -50,7 +47,7 @@ export default function SquadBuilder() {
         setCurrentPosition={setCurrentPosition}
         firstTeam={firstTeam}
       />
-      <BenchBar />
+      <BenchBar allPositions={allPositions} firstTeam={firstTeam} />
     </div>
   );
 }

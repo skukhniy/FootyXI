@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import SearchPlayer from './SearchPlayer';
 import SearchResults from './SearchResults';
-
-interface firstTeamObject {
-  [key: string | number]: string;
-}
+import { firstTeamObject } from '../../../assets/interfaces';
 
 interface AddPlayerProps {
   showAddPlayer: boolean;

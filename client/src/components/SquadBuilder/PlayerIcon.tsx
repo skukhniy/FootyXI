@@ -1,9 +1,6 @@
 import React from 'react';
 import kitIcon from '../../assets/kit-icon.png';
-
-interface firstTeamObject {
-  [key: string | number]: string;
-}
+import { firstTeamObject } from '../../assets/interfaces';
 
 interface positionProps {
   position: string;
@@ -39,7 +36,11 @@ export default function PlayerIcon({
         <img className=" " src={kitIcon}></img>
       </div>
 
-      {firstTeam[position] ? <p>{firstTeam[position]}</p> : <p>Player Name</p>}
+      {firstTeam[position]['name'] ? (
+        <p>{firstTeam[position]['name']}</p>
+      ) : (
+        <p>Player Name</p>
+      )}
       <p className="relative bottom-12 left-9 font-bold ">90</p>
 
       {/* <select>

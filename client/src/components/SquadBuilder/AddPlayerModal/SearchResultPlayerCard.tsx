@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface firstTeamObject {
-  [key: string | number]: string;
-}
+import { firstTeamObject } from '../../../assets/interfaces';
 
 interface playerInfoProp {
   playerInfo: playerObjectInfo;
@@ -33,7 +30,11 @@ export default function SearchResultPlayerCard({
 
   const addToTeam = () => {
     let firstTeamCopy = firstTeam;
-    firstTeamCopy[currentPosition] = playerInfo.known_as;
+    firstTeamCopy[currentPosition] = {
+      name: playerInfo.known_as,
+      position: playerInfo.best_position,
+      ovr: playerInfo.overall,
+    };
     setFirstTeam(firstTeamCopy);
     console.log(firstTeamCopy);
   };

@@ -2,10 +2,7 @@ import React from 'react';
 import '../../styles/formations.css';
 import { formationPositions } from '../../assets/formationsData';
 import PlayerIcon from './PlayerIcon';
-
-interface firstTeamObject {
-  [key: string | number]: string;
-}
+import { firstTeamObject } from '../../assets/interfaces';
 
 interface formationProps {
   formation: string;
