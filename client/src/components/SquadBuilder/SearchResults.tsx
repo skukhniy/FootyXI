@@ -25,8 +25,8 @@ export default function SearchResults({ searchResults }: resultProps) {
     </div>
   ));
   return (
-    <div id="searchResults" className=" h-[500px] overflow-y-scroll">
-      <div className="grid grid-cols-7 text-center">
+    <div id="searchResults">
+      <div className="grid grid-cols-7 text-center pb-1">
         <span></span>
         <span className="">Name</span>
         <span>Position</span>
@@ -35,7 +35,8 @@ export default function SearchResults({ searchResults }: resultProps) {
         <span>Nation</span>
         <span>Add</span>
       </div>
-      {playerCards}
+      <hr className="w-full"></hr>
+      <div className=" h-[500px] overflow-y-scroll pt-5">{playerCards}</div>
     </div>
   );
 }

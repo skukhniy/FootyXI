@@ -19,7 +19,7 @@ export default function SearchResultPlayerCard({ playerInfo }: playerInfoProp) {
   console.log(`playerInfo`);
   console.log(playerInfo);
   return (
-    <div className="flex justify-between items-center pb-8">
+    <div className="grid grid-cols-7 pb-8 items-center justify-items-center">
       <img
         id="playerPic"
         src={playerInfo.image_link ? playerInfo.image_link : ''}
