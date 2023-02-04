@@ -15,8 +15,8 @@ export default function SearchPlayer(props: searchProps) {
     return keywords.replace(' ', '+').trim();
   };
 
-  const getSearchResults = async () => {
-    console.log('click');
+  const getSearchResults = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         `http://localhost:4007/players/search?name=${cleanQueryString()}`
@@ -30,7 +30,10 @@ export default function SearchPlayer(props: searchProps) {
   };
 
   return (
-    <div className="input-group relative flex items-stretch w-full mb-4">
+    <form
+      onSubmit={getSearchResults}
+      className="input-group relative flex items-stretch w-full mb-4"
+    >
       <input
         type="search"
         className="form-control relative flex-auto md:w-[500px] w-full block px-3 py-1.5 text-base
@@ -47,9 +50,8 @@ export default function SearchPlayer(props: searchProps) {
           leading-tight uppercase rounded shadow-md hover:bg-green-700
           hover:shadow-lg focus:bg-green-700  focus:shadow-lg focus:outline-none
           focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out flex items-center"
-        type="button"
+        type="submit"
         id="button-addon2"
-        onClick={getSearchResults}
       >
         <svg
           aria-hidden="true"
@@ -67,6 +69,6 @@ export default function SearchPlayer(props: searchProps) {
           ></path>
         </svg>
       </button>
-    </div>
+    </form>
   );
 }
