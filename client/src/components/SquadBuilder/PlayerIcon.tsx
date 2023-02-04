@@ -10,13 +10,16 @@ export default function PlayerIcon(props: positionProps) {
   const positionTitle = props.position.toUpperCase();
 
   return (
-    <div className={`playerBlock ${props.position}`}>
+    <div
+      className={`playerBlock ${props.position} flex flex-col justify-center items-center`}
+    >
       <img
         className="hover:cursor-pointer "
         src={kitIcon}
         onClick={() => props.setAddPlayerModal(true)}
       ></img>
       <p>{positionTitle}</p>
+      <p>Player Name</p>
       {/* <select>
         <option selected></option>
         <option>Kane</option>
