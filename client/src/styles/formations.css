@@ -2,7 +2,7 @@
 @tailwind utilities;
 
 #formationContainer {
-  @apply bg-green-300 w-full flex justify-center pt-5 pb-10;
+  @apply bg-gray-500 w-full flex justify-center pt-5 pb-10;
   overflow-y: auto;
 }
 

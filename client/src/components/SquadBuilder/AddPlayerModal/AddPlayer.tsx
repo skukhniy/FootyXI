@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import SearchPlayer from './SearchPlayer';
 import SearchResults from './SearchResults';
 
+interface firstTeamObject {
+  [key: string | number]: string;
+}
+
 interface AddPlayerProps {
   showAddPlayer: boolean;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
+  currentPosition: string;
+  firstTeam: firstTeamObject;
+  setFirstTeam: React.Dispatch<React.SetStateAction<firstTeamObject>>;
 }
 
 export default function AddPlayer(props: AddPlayerProps) {
@@ -28,7 +35,12 @@ export default function AddPlayer(props: AddPlayerProps) {
               <SearchPlayer setSearchResults={setSearchResults} />
               {/* conditional render for the search results section */}
               {hasResults ? (
-                <SearchResults searchResults={searchResults} />
+                <SearchResults
+                  searchResults={searchResults}
+                  currentPosition={props.currentPosition}
+                  firstTeam={props.firstTeam}
+                  setFirstTeam={props.setFirstTeam}
+                />
               ) : (
                 ''
               )}

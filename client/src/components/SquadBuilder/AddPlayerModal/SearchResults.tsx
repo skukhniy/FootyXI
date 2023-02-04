@@ -1,8 +1,15 @@
 import React from 'react';
 import SearchResultPlayerCard from './SearchResultPlayerCard';
 
+interface firstTeamObject {
+  [key: string | number]: string;
+}
+
 interface resultProps {
   searchResults: Array<playerObjectInfo>;
+  currentPosition: string;
+  firstTeam: firstTeamObject;
+  setFirstTeam: React.Dispatch<React.SetStateAction<firstTeamObject>>;
 }
 
 interface playerObjectInfo {
@@ -17,10 +24,20 @@ interface playerObjectInfo {
   potential: number;
 }
 
-export default function SearchResults({ searchResults }: resultProps) {
+export default function SearchResults({
+  searchResults,
+  currentPosition,
+  firstTeam,
+  setFirstTeam,
+}: resultProps) {
   const playerCards = searchResults.map((playerInfo) => (
     <div>
-      <SearchResultPlayerCard playerInfo={playerInfo} />
+      <SearchResultPlayerCard
+        playerInfo={playerInfo}
+        currentPosition={currentPosition}
+        firstTeam={firstTeam}
+        setFirstTeam={setFirstTeam}
+      />
       <hr className="w-full mb-8" />
     </div>
   ));

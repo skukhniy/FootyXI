@@ -3,9 +3,15 @@ import '../../styles/formations.css';
 import { formationPositions } from '../../assets/formationsData';
 import PlayerIcon from './PlayerIcon';
 
+interface firstTeamObject {
+  [key: string | number]: string;
+}
+
 interface formationProps {
   formation: string;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
+  firstTeam: firstTeamObject;
 }
 
 export default function FormationUi(props: formationProps) {
@@ -19,6 +25,8 @@ export default function FormationUi(props: formationProps) {
     <PlayerIcon
       position={position}
       setAddPlayerModal={props.setAddPlayerModal}
+      setCurrentPosition={props.setCurrentPosition}
+      firstTeam={props.firstTeam}
     />
   ));
 

@@ -1,7 +1,14 @@
 import React from 'react';
 
+interface firstTeamObject {
+  [key: string | number]: string;
+}
+
 interface playerInfoProp {
   playerInfo: playerObjectInfo;
+  currentPosition: string;
+  firstTeam: firstTeamObject;
+  setFirstTeam: React.Dispatch<React.SetStateAction<firstTeamObject>>;
 }
 interface playerObjectInfo {
   best_position: string;
@@ -15,9 +22,22 @@ interface playerObjectInfo {
   potential: number;
 }
 
-export default function SearchResultPlayerCard({ playerInfo }: playerInfoProp) {
+export default function SearchResultPlayerCard({
+  playerInfo,
+  firstTeam,
+  setFirstTeam,
+  currentPosition,
+}: playerInfoProp) {
   console.log(`playerInfo`);
   console.log(playerInfo);
+
+  const addToTeam = () => {
+    let firstTeamCopy = firstTeam;
+    firstTeamCopy[currentPosition] = playerInfo.known_as;
+    setFirstTeam(firstTeamCopy);
+    console.log(firstTeamCopy);
+  };
+
   return (
     <div className="grid grid-cols-7 pb-8 items-center justify-items-center">
       <img
@@ -37,7 +57,10 @@ export default function SearchResultPlayerCard({ playerInfo }: playerInfoProp) {
         }
         className="w-[30px] h-[20px] text-center mt-1"
       ></img>
-      <button className="rounded-full bg-green-400 inline-block h-8 w-8 text-white font-extrabold text-xl text-center">
+      <button
+        onClick={addToTeam}
+        className="rounded-full bg-green-400 inline-block h-8 w-8 text-white font-extrabold text-xl text-center"
+      >
         <p className="mb-1">+</p>
       </button>
     </div>

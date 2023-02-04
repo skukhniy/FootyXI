@@ -15,6 +15,7 @@ export default function SquadBuilder() {
   const [dbType, setDbType] = useState(null);
   const [formation, setFormation] = useState('442');
   const [showAddPlayer, setAddPlayerModal] = useState(false);
+  const [currentPosition, setCurrentPosition] = useState('');
 
   // create template for the first team state
   // will create dynamic keys for each position
@@ -37,14 +38,35 @@ export default function SquadBuilder() {
         <AddPlayer
           showAddPlayer={showAddPlayer}
           setAddPlayerModal={setAddPlayerModal}
+          currentPosition={currentPosition}
+          firstTeam={firstTeam}
+          setFirstTeam={setFirstTeam}
         />
       ) : null}
       <OptionsBar formation={formation} setFormation={setFormation} />
       <FormationUi
         formation={formation}
         setAddPlayerModal={setAddPlayerModal}
+        setCurrentPosition={setCurrentPosition}
+        firstTeam={firstTeam}
       />
       <BenchBar />
     </div>
   );
 }
+
+// testTeam:
+
+// {
+//   "ls": "H. Kane",
+//   "rs": "H. Son",
+//   "lm": "M. Mudryk",
+//   "lcm": "R. Bentancur",
+//   "rcm": "Casemiro",
+//   "rm": "G. Bale",
+//   "lb": "T. Herníçndez",
+//   "lcb": "V. van Dijk",
+//   "rcb": "C. Romero",
+//   "rb": "A. Hakimi",
+//   "gk": "Diogo Costa"
+// }

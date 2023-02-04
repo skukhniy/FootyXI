@@ -1,25 +1,47 @@
 import React from 'react';
 import kitIcon from '../../assets/kit-icon.png';
 
+interface firstTeamObject {
+  [key: string | number]: string;
+}
+
 interface positionProps {
   position: string;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
+  firstTeam: firstTeamObject;
 }
 
-export default function PlayerIcon(props: positionProps) {
-  const positionTitle = props.position.toUpperCase();
+export default function PlayerIcon({
+  position,
+  firstTeam,
+  setAddPlayerModal,
+  setCurrentPosition,
+}: positionProps) {
+  const positionTitle = position.toUpperCase();
+  console.log(firstTeam['ls']);
 
   return (
     <div
-      className={`playerBlock ${props.position} flex flex-col justify-center items-center`}
+      onClick={() => setCurrentPosition(position)}
+      className={`text-white playerBlock ${position} flex flex-col justify-center items-center`}
     >
-      <img
-        className="hover:cursor-pointer "
-        src={kitIcon}
-        onClick={() => props.setAddPlayerModal(true)}
-      ></img>
-      <p>{positionTitle}</p>
-      <p>Player Name</p>
+      <div
+        className="hover:cursor-pointer"
+        onClick={() => setAddPlayerModal(true)}
+      >
+        <p
+          id="position"
+          className="relative top-11 mt-[-2.75rem] text-xs text-black"
+        >
+          {positionTitle}
+        </p>
+        <img className=" " src={kitIcon}></img>
+      </div>
+
+      {firstTeam[position] ? <p>{firstTeam[position]}</p> : <p>Player Name</p>}
+      <p className="relative bottom-12 left-9 font-bold ">90</p>
+
       {/* <select>
         <option selected></option>
         <option>Kane</option>
