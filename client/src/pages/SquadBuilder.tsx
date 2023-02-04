@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/modals.css';
-import AddPlayer from '../components/SquadBuilder/AddPlayer';
+import AddPlayer from '../components/SquadBuilder/AddPlayerModal/AddPlayer';
 import BenchBar from '../components/SquadBuilder/BenchBar';
 import FormationUi from '../components/SquadBuilder/FormationUi';
 import OptionsBar from '../components/SquadBuilder/OptionsBar';
