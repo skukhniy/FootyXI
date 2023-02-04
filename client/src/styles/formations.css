@@ -64,7 +64,7 @@
     grid-column: 7;
   }
   & .gk {
-    grid-column: 4;
+    grid-column: 3/6;
   }
 }
 
