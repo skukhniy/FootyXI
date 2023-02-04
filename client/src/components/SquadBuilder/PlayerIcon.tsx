@@ -41,7 +41,9 @@ export default function PlayerIcon({
       ) : (
         <p>Player Name</p>
       )}
-      <p className="relative bottom-12 left-9 font-bold ">90</p>
+      <p className="relative bottom-12 left-9 font-bold ">
+        {firstTeam[position]['ovr']}
+      </p>
 
       {/* <select>
         <option selected></option>
