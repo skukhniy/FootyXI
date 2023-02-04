@@ -18,7 +18,7 @@ export default function AddPlayer(props: AddPlayerProps) {
   return (
     <>
       {/* overlaying modal container, goes over the entire screen */}
-      <div className="modal" id="addPlayer">
+      <div className="modalAddPlayer" id="addPlayer">
         {/*content parent container*/}
         <div className="contentParent">
           {/* content child container ( what gives the box shape) */}

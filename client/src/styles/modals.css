@@ -2,7 +2,11 @@
 @tailwind utilities;
 
 .modal {
-  @apply justify-center items-center flex overflow-x-hidden overflow-y-auto fixed  z-50 outline-none focus:outline-none;
+  @apply justify-center items-center flex mx-auto overflow-x-hidden overflow-y-auto fixed z-50 outline-none focus:outline-none;
+}
+
+.modalAddPlayer {
+  @apply overflow-x-hidden overflow-y-auto fixed z-50 outline-none focus:outline-none;
 }
 
 .contentParent {
@@ -10,7 +14,7 @@
 }
 
 .contentChild {
-  @apply border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-5;
+  @apply border-0 z-50 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-5;
 }
 
 .modalBackground {
@@ -18,5 +22,6 @@
 }
 
 #addPlayer {
-  @apply right-0 left-0;
+  left: 50%;
+  transform: translateX(-50%);
 }
