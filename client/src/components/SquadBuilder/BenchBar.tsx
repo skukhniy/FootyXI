@@ -24,7 +24,7 @@ export default function BenchBar({ allPositions, firstTeam }: benchProps) {
   return (
     <div className=" bg-gray-600 text-white p-2">
       <h1>Substitutes</h1>
-      <div className="flex">
+      <div className="flex flex-wrap">
         <BenchPlayerCard />
         <BenchPlayerCard />
         <BenchPlayerCard />
