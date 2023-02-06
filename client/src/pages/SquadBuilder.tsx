@@ -19,12 +19,27 @@ export default function SquadBuilder() {
     formationPositions[formationKey as keyof typeof formationPositions];
   const [allPositions, setAllPositions] = useState(formationArray);
 
-  let firstTeamTemplate = {} as firstTeamObject;
-  formationArray.forEach((position) => {
-    firstTeamTemplate[position] = { name: '', position: '', ovr: 0 };
-  });
-  const [firstTeam, setFirstTeam] = useState(firstTeamTemplate);
+  const createFirstTeamTemplate = (formationArray: any) => {
+    let firstTeamTemplate = {} as firstTeamObject;
+    formationArray.forEach((position: string) => {
+      firstTeamTemplate[position] = {
+        name: '',
+        position: '',
+        ovr: 0,
+        player_id: undefined,
+        player_photo: undefined,
+      };
+    });
+    return firstTeamTemplate;
+  };
 
+  const [firstTeam, setFirstTeam] = useState(
+    createFirstTeamTemplate(formationArray)
+  );
+
+  console.log(formation);
+  console.log(formationArray);
+  console.log(createFirstTeamTemplate(formationArray));
   console.log(firstTeam);
 
   return (
@@ -41,7 +56,13 @@ export default function SquadBuilder() {
         />
       ) : null}
       <div className="flex">
-        <OptionsBar formation={formation} setFormation={setFormation} />
+        <OptionsBar
+          formation={formation}
+          setFormation={setFormation}
+          setFirstTeam={setFirstTeam}
+          firstTeam={firstTeam}
+          createFirstTeamTemplate={createFirstTeamTemplate}
+        />
         <FormationUi
           formation={formation}
           setAddPlayerModal={setAddPlayerModal}
@@ -53,19 +74,3 @@ export default function SquadBuilder() {
     </div>
   );
 }
-
-// testTeam:
-
-// {
-//   "ls": "H. Kane",
-//   "rs": "H. Son",
-//   "lm": "M. Mudryk",
-//   "lcm": "R. Bentancur",
-//   "rcm": "Casemiro",
-//   "rm": "G. Bale",
-//   "lb": "T. Herníçndez",
-//   "lcb": "V. van Dijk",
-//   "rcb": "C. Romero",
-//   "rb": "A. Hakimi",
-//   "gk": "Diogo Costa"
-// }

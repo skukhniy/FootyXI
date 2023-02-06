@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function BenchPlayerCard() {
-  return (
+  const playerHTML = (
     <div className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1">
       <div className="relative self-end text-gray-400 font-light hover:cursor-pointer">
         x
@@ -21,6 +21,29 @@ export default function BenchPlayerCard() {
       <p id="name" className="text-center ml-4">
         Mahrez
       </p>
+    </div>
+  );
+
+  // const noPlayerSelected = ();
+
+  return (
+    <div className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1">
+      <div className="flex flex-col justify-center items-center mt-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          className="w-8 mb-2 icon-add rounded-full bg-gray-300"
+        >
+          <path
+            className="secondary"
+            fill-rule="evenodd"
+            d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"
+          ></path>
+        </svg>
+        <p id="name" className="text-center mb-2">
+          Add Player
+        </p>
+      </div>
     </div>
   );
 }

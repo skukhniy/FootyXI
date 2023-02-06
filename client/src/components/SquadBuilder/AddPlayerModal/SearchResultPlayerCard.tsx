@@ -34,6 +34,7 @@ export default function SearchResultPlayerCard({
       name: playerInfo.known_as,
       position: playerInfo.best_position,
       ovr: playerInfo.overall,
+      player_id: playerInfo.id,
     };
     setFirstTeam(firstTeamCopy);
     console.log(firstTeamCopy);

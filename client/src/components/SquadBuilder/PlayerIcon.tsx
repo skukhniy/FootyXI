@@ -16,7 +16,6 @@ export default function PlayerIcon({
   setCurrentPosition,
 }: positionProps) {
   const positionTitle = position.toUpperCase();
-  console.log(firstTeam['ls']);
 
   return (
     <div
