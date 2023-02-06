@@ -12,7 +12,7 @@ export default function SBsideBar(props: formationProps) {
   ));
 
   return (
-    <div className="w-[0px] bg-gray-200 p-2">
+    <div className="w-[200px] bg-gray-200 p-2">
       <h1>Options</h1>
       <h3 className="pt-5">Formation:</h3>
       <select

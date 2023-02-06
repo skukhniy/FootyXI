@@ -40,13 +40,15 @@ export default function SquadBuilder() {
           setFirstTeam={setFirstTeam}
         />
       ) : null}
-      {/* <OptionsBar formation={formation} setFormation={setFormation} /> */}
-      <FormationUi
-        formation={formation}
-        setAddPlayerModal={setAddPlayerModal}
-        setCurrentPosition={setCurrentPosition}
-        firstTeam={firstTeam}
-      />
+      <div className="flex">
+        <OptionsBar formation={formation} setFormation={setFormation} />
+        <FormationUi
+          formation={formation}
+          setAddPlayerModal={setAddPlayerModal}
+          setCurrentPosition={setCurrentPosition}
+          firstTeam={firstTeam}
+        />
+      </div>
       <BenchBar allPositions={allPositions} firstTeam={firstTeam} />
     </div>
   );
