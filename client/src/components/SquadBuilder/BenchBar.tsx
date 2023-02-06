@@ -21,7 +21,7 @@ export default function BenchBar({ allPositions, firstTeam }: benchProps) {
     </div>
   ));
   return (
-    <div className="w-[1000px] bg-gray-200 p-2">
+    <div className=" bg-gray-200 p-2">
       <h1>Bench / Reserves</h1>
       <div>
         <div className="grid grid-cols-5 text-center">

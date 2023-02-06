@@ -28,7 +28,7 @@ export default function SquadBuilder() {
   console.log(firstTeam);
 
   return (
-    <div className="h-[calc(100%_-_56px)] flex flex-row">
+    <div className="flex flex-col">
       <SelectDbModal dbType={dbType} setDbType={setDbType} />
       {/* Conditional for the Add Player Modal */}
       {showAddPlayer ? (
@@ -40,7 +40,7 @@ export default function SquadBuilder() {
           setFirstTeam={setFirstTeam}
         />
       ) : null}
-      <OptionsBar formation={formation} setFormation={setFormation} />
+      {/* <OptionsBar formation={formation} setFormation={setFormation} /> */}
       <FormationUi
         formation={formation}
         setAddPlayerModal={setAddPlayerModal}

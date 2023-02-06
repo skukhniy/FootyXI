@@ -39,11 +39,15 @@ export default function PlayerIcon({
       {firstTeam[position]['name'] ? (
         <p>{firstTeam[position]['name']}</p>
       ) : (
-        <p>Player Name</p>
+        <p>Pick Player</p>
       )}
-      <p className="relative bottom-12 left-9 font-bold ">
-        {firstTeam[position]['ovr']}
-      </p>
+      {firstTeam[position]['ovr'] > 0 ? (
+        <p className="relative bottom-12 left-9 font-bold ">
+          {firstTeam[position]['ovr']}
+        </p>
+      ) : (
+        ''
+      )}
 
       {/* <select>
         <option selected></option>

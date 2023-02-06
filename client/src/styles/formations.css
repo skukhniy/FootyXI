@@ -3,7 +3,7 @@
 
 #formationContainer {
   @apply bg-gray-500 w-full flex justify-center pt-5 pb-10;
-  overflow-y: auto;
+  height: 500px;
 }
 
 .formationGrid {
