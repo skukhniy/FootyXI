@@ -1,6 +1,17 @@
 import React from 'react';
+import { playerObject } from '../../assets/interfaces';
 
-export default function BenchPlayerCard() {
+interface benchPlayerProps {
+  subPlayer: playerObject;
+  subNum: string;
+  setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function BenchPlayerCard({
+  subPlayer,
+  subNum,
+  setCurrentPosition,
+}: benchPlayerProps) {
   const playerHTML = (
     <div className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1">
       <div className="relative self-end text-gray-400 font-light hover:cursor-pointer">
@@ -24,9 +35,7 @@ export default function BenchPlayerCard() {
     </div>
   );
 
-  // const noPlayerSelected = ();
-
-  return (
+  const noPlayerSelectedHTML = (
     <div className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1">
       <div className="flex flex-col justify-center items-center mt-2">
         <svg
@@ -46,4 +55,6 @@ export default function BenchPlayerCard() {
       </div>
     </div>
   );
+
+  return <>{subPlayer.name !== '' ? playerHTML : noPlayerSelectedHTML}</>;
 }

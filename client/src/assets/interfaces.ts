@@ -2,7 +2,11 @@ export interface firstTeamObject {
   [key: string | number]: playerObject;
 }
 
-interface playerObject {
+export interface substituteObject {
+  [key: string | number]: playerObject;
+}
+
+export interface playerObject {
   name: string;
   position: string;
   ovr: number;

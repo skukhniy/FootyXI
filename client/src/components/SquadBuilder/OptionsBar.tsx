@@ -41,7 +41,6 @@ export default function SBsideBar({
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-1"
         onChange={(e) => updateFormation(e)}
       >
-        <option selected>Choose a formation</option>
         {formationOptions}
       </select>
     </div>
