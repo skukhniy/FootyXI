@@ -28,16 +28,32 @@ export default function SearchResultPlayerCard({
   console.log(`playerInfo`);
   console.log(playerInfo);
 
-  const addToTeam = () => {
-    let firstTeamCopy = firstTeam;
-    firstTeamCopy[currentPosition] = {
+  const addPlayerInfo = (team: any, stateFunc: any, currentPosition: any) => {
+    let teamCopy = team;
+    teamCopy[currentPosition] = {
       name: playerInfo.known_as,
       position: playerInfo.best_position,
       ovr: playerInfo.overall,
       player_id: playerInfo.id,
+      player_photo: playerInfo.image_link,
     };
-    setFirstTeam(firstTeamCopy);
-    console.log(firstTeamCopy);
+    stateFunc(teamCopy);
+  };
+
+  const addToTeam = () => {
+    if (currentPosition.startsWith('s')) {
+    } else {
+      let firstTeamCopy = firstTeam;
+      firstTeamCopy[currentPosition] = {
+        name: playerInfo.known_as,
+        position: playerInfo.best_position,
+        ovr: playerInfo.overall,
+        player_id: playerInfo.id,
+        player_photo: playerInfo.image_link,
+      };
+      setFirstTeam(firstTeamCopy);
+      console.log(firstTeamCopy);
+    }
   };
 
   return (

@@ -5,12 +5,14 @@ interface benchPlayerProps {
   subPlayer: playerObject;
   subNum: string;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
+  setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function BenchPlayerCard({
   subPlayer,
   subNum,
   setCurrentPosition,
+  setAddPlayerModal,
 }: benchPlayerProps) {
   const playerHTML = (
     <div className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1">
@@ -36,7 +38,10 @@ export default function BenchPlayerCard({
   );
 
   const noPlayerSelectedHTML = (
-    <div className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1">
+    <div
+      onClick={() => setAddPlayerModal(true)}
+      className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1"
+    >
       <div className="flex flex-col justify-center items-center mt-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

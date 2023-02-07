@@ -9,6 +9,7 @@ interface benchProps {
   setSubstitutes: React.Dispatch<React.SetStateAction<substituteObject>>;
   currentPosition: string;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
+  setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function BenchBar({
@@ -18,6 +19,7 @@ export default function BenchBar({
   setSubstitutes,
   currentPosition,
   setCurrentPosition,
+  setAddPlayerModal,
 }: benchProps) {
   // const firstTeamRows = allPositions.map((position) => (
   //   <div className="grid grid-cols-5 text-center">
@@ -39,6 +41,7 @@ export default function BenchBar({
       subPlayer={substitutes[subNum]}
       subNum={subNum}
       setCurrentPosition={setCurrentPosition}
+      setAddPlayerModal={setAddPlayerModal}
     />
   ));
   return (

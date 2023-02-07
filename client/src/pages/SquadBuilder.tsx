@@ -97,6 +97,7 @@ export default function SquadBuilder() {
         setSubstitutes={setSubstitutes}
         currentPosition={currentPosition}
         setCurrentPosition={setCurrentPosition}
+        setAddPlayerModal={setAddPlayerModal}
       />
     </div>
   );
