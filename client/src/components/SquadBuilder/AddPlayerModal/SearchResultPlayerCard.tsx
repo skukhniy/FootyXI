@@ -41,7 +41,7 @@ export default function SearchResultPlayerCard({
       rosterCopy['reserves'].push(playerObj);
     }
 
-    setRoster(rosterCopy);
+    setRoster((rosterCopy) => ({ ...rosterCopy }));
   };
 
   const addToTeam = () => {
