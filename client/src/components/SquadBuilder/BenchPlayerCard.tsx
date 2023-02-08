@@ -23,23 +23,28 @@ export default function BenchPlayerCard({
         <div className="flex justify-cxenter items-center">
           <div className="rounded-full bg-blue-300 h-3 w-3 mr-1"></div>
           <p id="POS" className="">
-            RW
+            {subPlayer.position}
           </p>
         </div>
-        <img src="https://cdn.sofifa.net/players/204/485/23_60.png"></img>
+        <img src={subPlayer.player_photo}></img>
         <h1 className="font" id="OVR">
-          87
+          {subPlayer.ovr}
         </h1>
       </div>
       <p id="name" className="text-center ml-4">
-        Mahrez
+        {subPlayer.name}
       </p>
     </div>
   );
 
+  const addPlayerFunc = () => {
+    setCurrentPosition(subNum);
+    setAddPlayerModal(true);
+  };
+
   const noPlayerSelectedHTML = (
     <div
-      onClick={() => setAddPlayerModal(true)}
+      onClick={() => addPlayerFunc()}
       className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1"
     >
       <div className="flex flex-col justify-center items-center mt-2">

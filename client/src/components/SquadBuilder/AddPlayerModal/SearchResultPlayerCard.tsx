@@ -43,7 +43,8 @@ export default function SearchResultPlayerCard({
 
   const addToTeam = () => {
     if (currentPosition.startsWith('s')) {
-      addPlayerInfo('substitute');
+      addPlayerInfo('substitutes');
+      console.log(roster['substitutes']);
     } else {
       addPlayerInfo('firstTeam');
     }
