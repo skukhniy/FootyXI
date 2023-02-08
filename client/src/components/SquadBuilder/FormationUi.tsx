@@ -7,6 +7,7 @@ import { rosterObject } from '../../assets/interfaces';
 interface formationProps {
   formation: string;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
   roster: rosterObject;
 }
@@ -24,6 +25,7 @@ export default function FormationUi(props: formationProps) {
       setAddPlayerModal={props.setAddPlayerModal}
       setCurrentPosition={props.setCurrentPosition}
       roster={props.roster}
+      setRoster={props.setRoster}
     />
   ));
 

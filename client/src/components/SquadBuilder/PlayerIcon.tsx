@@ -1,17 +1,20 @@
 import React from 'react';
 import kitIcon from '../../assets/kit-icon.png';
 import { firstTeamObject, rosterObject } from '../../assets/interfaces';
+import PickPlayerDropdown from './PickPlayerDropdown';
 
 interface positionProps {
   position: string;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
   roster: rosterObject;
+  setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
 }
 
 export default function PlayerIcon({
   position,
   roster,
+  setRoster,
   setAddPlayerModal,
   setCurrentPosition,
 }: positionProps) {
@@ -38,7 +41,7 @@ export default function PlayerIcon({
       {roster['firstTeam'][position]['name'] ? (
         <p>{roster['firstTeam'][position]['name']}</p>
       ) : (
-        <p>Pick Player</p>
+        <PickPlayerDropdown roster={roster} setRoster={setRoster} />
       )}
       {roster['firstTeam'][position]['ovr'] > 0 ? (
         <p className="relative bottom-12 left-9 font-bold ">
