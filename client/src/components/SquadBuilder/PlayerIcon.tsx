@@ -35,7 +35,7 @@ export default function PlayerIcon({
         <img className=" " src={kitIcon}></img>
       </div>
 
-      {roster['firstTeam']['name'] ? (
+      {roster['firstTeam'][position]['name'] ? (
         <p>{roster['firstTeam'][position]['name']}</p>
       ) : (
         <p>Pick Player</p>

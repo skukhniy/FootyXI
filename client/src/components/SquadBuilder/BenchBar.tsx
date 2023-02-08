@@ -44,6 +44,8 @@ export default function BenchBar({
       subNum={subNum}
       setCurrentPosition={setCurrentPosition}
       setAddPlayerModal={setAddPlayerModal}
+      setRoster={setRoster}
+      roster={roster}
     />
   ));
   return (

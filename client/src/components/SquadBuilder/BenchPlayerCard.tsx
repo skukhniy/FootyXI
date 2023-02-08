@@ -1,11 +1,13 @@
 import React from 'react';
-import { playerObject } from '../../assets/interfaces';
+import { playerObject, rosterObject } from '../../assets/interfaces';
 
 interface benchPlayerProps {
   subPlayer: playerObject;
   subNum: string;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
+  roster: rosterObject;
+  setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
 }
 
 export default function BenchPlayerCard({
@@ -13,12 +15,34 @@ export default function BenchPlayerCard({
   subNum,
   setCurrentPosition,
   setAddPlayerModal,
+  roster,
+  setRoster,
 }: benchPlayerProps) {
-  const playerHTML = (
+  const removeSub = () => {
+    setRoster((roster) => ({
+      ...roster,
+      substitutes: {
+        ...roster.substitutes,
+        [subNum]: {
+          name: '',
+          position: '',
+          ovr: 0,
+          player_id: undefined,
+          player_photo: undefined,
+        },
+      },
+    }));
+    console.log(roster);
+  };
+
+  let playerHTML = (
     <div className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1">
-      <div className="relative self-end text-gray-400 font-light hover:cursor-pointer">
+      <button
+        onClick={() => removeSub()}
+        className="relative self-end text-gray-400 font-light hover:cursor-pointer"
+      >
         x
-      </div>
+      </button>
       <div className="flex items-end justify-center mt-[-13px]">
         <div className="flex justify-cxenter items-center">
           <div className="rounded-full bg-blue-300 h-3 w-3 mr-1"></div>
@@ -42,7 +66,7 @@ export default function BenchPlayerCard({
     setAddPlayerModal(true);
   };
 
-  const noPlayerSelectedHTML = (
+  let noPlayerSelectedHTML = (
     <div
       onClick={() => addPlayerFunc()}
       className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1"
@@ -66,5 +90,11 @@ export default function BenchPlayerCard({
     </div>
   );
 
-  return <>{subPlayer.name !== '' ? playerHTML : noPlayerSelectedHTML}</>;
+  return (
+    <>
+      {roster['substitutes'][subNum]['name'] !== ''
+        ? playerHTML
+        : noPlayerSelectedHTML}
+    </>
+  );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/modals.css';
 import AddPlayer from '../components/SquadBuilder/AddPlayerModal/AddPlayer';
 import BenchBar from '../components/SquadBuilder/BenchBar';
@@ -54,6 +54,13 @@ export default function SquadBuilder() {
     firstTeam: createFirstTeamTemplate(formationArray),
     substitutes: substituteTemplate,
   });
+
+  useEffect(() => {
+    // this hook will get called every time myArr has changed
+    // perform some action every time myArr is updated
+    console.log('Updated State', roster);
+  }, [roster]);
+
   // console.log(formation);
   // console.log(formationArray);
   // console.log(createFirstTeamTemplate(formationArray));
