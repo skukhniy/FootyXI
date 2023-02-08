@@ -25,19 +25,22 @@ export default function SearchResultPlayerCard({
   setRoster,
   currentPosition,
 }: playerInfoProp) {
-  console.log(`playerInfo`);
-  console.log(playerInfo);
-
   const addPlayerInfo = (playerType: string) => {
     let rosterCopy: rosterObject = roster;
-    const rosterCopyKey = playerType as keyof typeof rosterCopy;
-    rosterCopy[rosterCopyKey][currentPosition] = {
+    let playerObj = {
       name: playerInfo.known_as,
       position: playerInfo.best_position,
       ovr: playerInfo.overall,
       player_id: playerInfo.id,
       player_photo: playerInfo.image_link,
     };
+    if (playerType === 'substitutes' || playerType === 'firstTeam') {
+      const rosterCopyKey = playerType as 'firstTeam' | 'substitutes';
+      rosterCopy[rosterCopyKey][currentPosition] = playerObj;
+    } else {
+      rosterCopy['reserves'].push(playerObj);
+    }
+
     setRoster(rosterCopy);
   };
 
@@ -45,6 +48,9 @@ export default function SearchResultPlayerCard({
     if (currentPosition.startsWith('s')) {
       addPlayerInfo('substitutes');
       console.log(roster['substitutes']);
+    } else if (currentPosition === 'reserve') {
+      addPlayerInfo('reserves');
+      console.log(roster['reserves']);
     } else {
       addPlayerInfo('firstTeam');
     }

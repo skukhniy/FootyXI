@@ -22,7 +22,6 @@ export default function SearchPlayer(props: searchProps) {
         `http://localhost:4007/players/search?name=${cleanQueryString()}`
       );
       const jsonData = await response.json();
-      console.log(jsonData);
       props.setSearchResults(jsonData);
     } catch (error) {
       console.log(getErrorMessage(error));

@@ -1,6 +1,7 @@
 export interface rosterObject {
   firstTeam: firstTeamObject;
   substitutes: substituteObject;
+  reserves: Array<playerObject>;
 }
 
 export interface firstTeamObject {

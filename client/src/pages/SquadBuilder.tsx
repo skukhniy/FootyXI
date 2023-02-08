@@ -6,7 +6,11 @@ import FormationUi from '../components/SquadBuilder/FormationUi';
 import OptionsBar from '../components/SquadBuilder/OptionsBar';
 import SelectDbModal from '../components/SquadBuilder/SelectDbModal';
 import { formationPositions } from '../assets/formationsData';
-import { firstTeamObject, substituteObject } from '../assets/interfaces';
+import {
+  firstTeamObject,
+  playerObject,
+  substituteObject,
+} from '../assets/interfaces';
 
 export default function SquadBuilder() {
   const [dbType, setDbType] = useState(null);
@@ -53,18 +57,8 @@ export default function SquadBuilder() {
   const [roster, setRoster] = useState({
     firstTeam: createFirstTeamTemplate(formationArray),
     substitutes: substituteTemplate,
+    reserves: [] as Array<playerObject>,
   });
-
-  useEffect(() => {
-    // this hook will get called every time myArr has changed
-    // perform some action every time myArr is updated
-    console.log('Updated State', roster);
-  }, [roster]);
-
-  // console.log(formation);
-  // console.log(formationArray);
-  // console.log(createFirstTeamTemplate(formationArray));
-  // console.log(firstTeam);
 
   return (
     <div className="flex flex-col">
