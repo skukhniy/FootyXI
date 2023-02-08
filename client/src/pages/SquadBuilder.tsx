@@ -32,8 +32,6 @@ export default function SquadBuilder() {
     s7: templatePlayerObj,
   } as substituteObject;
 
-  const [substitutes, setSubstitutes] = useState(substituteTemplate);
-
   const createFirstTeamTemplate = (formationArray: any) => {
     let firstTeamTemplate = {} as firstTeamObject;
     formationArray.forEach((position: string) => {
@@ -52,11 +50,10 @@ export default function SquadBuilder() {
     formationPositions[formationKey as keyof typeof formationPositions];
   const [allPositions, setAllPositions] = useState(formationArray);
 
-  const [firstTeam, setFirstTeam] = useState(
-    createFirstTeamTemplate(formationArray)
-  );
-
-  console.log(substitutes.s1);
+  const [roster, setRoster] = useState({
+    firstTeam: createFirstTeamTemplate(formationArray),
+    substitutes: substituteTemplate,
+  });
   // console.log(formation);
   // console.log(formationArray);
   // console.log(createFirstTeamTemplate(formationArray));
@@ -71,30 +68,29 @@ export default function SquadBuilder() {
           showAddPlayer={showAddPlayer}
           setAddPlayerModal={setAddPlayerModal}
           currentPosition={currentPosition}
-          firstTeam={firstTeam}
-          setFirstTeam={setFirstTeam}
+          roster={roster}
+          setRoster={setRoster}
         />
       ) : null}
       <div className="flex">
         <OptionsBar
           formation={formation}
           setFormation={setFormation}
-          setFirstTeam={setFirstTeam}
-          firstTeam={firstTeam}
+          setRoster={setRoster}
+          roster={roster}
           createFirstTeamTemplate={createFirstTeamTemplate}
         />
         <FormationUi
           formation={formation}
           setAddPlayerModal={setAddPlayerModal}
           setCurrentPosition={setCurrentPosition}
-          firstTeam={firstTeam}
+          roster={roster}
         />
       </div>
       <BenchBar
         allPositions={allPositions}
-        firstTeam={firstTeam}
-        substitutes={substitutes}
-        setSubstitutes={setSubstitutes}
+        roster={roster}
+        setRoster={setRoster}
         currentPosition={currentPosition}
         setCurrentPosition={setCurrentPosition}
         setAddPlayerModal={setAddPlayerModal}

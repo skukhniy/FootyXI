@@ -1,11 +1,11 @@
 import React from 'react';
-import { firstTeamObject } from '../../../assets/interfaces';
+import { rosterObject } from '../../../assets/interfaces';
 
 interface playerInfoProp {
   playerInfo: playerObjectInfo;
   currentPosition: string;
-  firstTeam: firstTeamObject;
-  setFirstTeam: React.Dispatch<React.SetStateAction<firstTeamObject>>;
+  roster: rosterObject;
+  setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
 }
 interface playerObjectInfo {
   best_position: string;
@@ -21,38 +21,31 @@ interface playerObjectInfo {
 
 export default function SearchResultPlayerCard({
   playerInfo,
-  firstTeam,
-  setFirstTeam,
+  roster,
+  setRoster,
   currentPosition,
 }: playerInfoProp) {
   console.log(`playerInfo`);
   console.log(playerInfo);
 
-  const addPlayerInfo = (team: any, stateFunc: any, currentPosition: any) => {
-    let teamCopy = team;
-    teamCopy[currentPosition] = {
+  const addPlayerInfo = (playerType: string) => {
+    let rosterCopy: rosterObject = roster;
+    const rosterCopyKey = playerType as keyof typeof rosterCopy;
+    rosterCopy[rosterCopyKey][currentPosition] = {
       name: playerInfo.known_as,
       position: playerInfo.best_position,
       ovr: playerInfo.overall,
       player_id: playerInfo.id,
       player_photo: playerInfo.image_link,
     };
-    stateFunc(teamCopy);
+    setRoster(rosterCopy);
   };
 
   const addToTeam = () => {
     if (currentPosition.startsWith('s')) {
+      addPlayerInfo('substitute');
     } else {
-      let firstTeamCopy = firstTeam;
-      firstTeamCopy[currentPosition] = {
-        name: playerInfo.known_as,
-        position: playerInfo.best_position,
-        ovr: playerInfo.overall,
-        player_id: playerInfo.id,
-        player_photo: playerInfo.image_link,
-      };
-      setFirstTeam(firstTeamCopy);
-      console.log(firstTeamCopy);
+      addPlayerInfo('firstTeam');
     }
   };
 

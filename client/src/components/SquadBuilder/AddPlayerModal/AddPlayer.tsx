@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import SearchPlayer from './SearchPlayer';
 import SearchResults from './SearchResults';
-import { firstTeamObject } from '../../../assets/interfaces';
+import { rosterObject } from '../../../assets/interfaces';
 
 interface AddPlayerProps {
   showAddPlayer: boolean;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
   currentPosition: string;
-  firstTeam: firstTeamObject;
-  setFirstTeam: React.Dispatch<React.SetStateAction<firstTeamObject>>;
+  roster: rosterObject;
+  setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
 }
 
 export default function AddPlayer(props: AddPlayerProps) {
@@ -35,8 +35,8 @@ export default function AddPlayer(props: AddPlayerProps) {
                 <SearchResults
                   searchResults={searchResults}
                   currentPosition={props.currentPosition}
-                  firstTeam={props.firstTeam}
-                  setFirstTeam={props.setFirstTeam}
+                  roster={props.roster}
+                  setRoster={props.setRoster}
                 />
               ) : (
                 ''

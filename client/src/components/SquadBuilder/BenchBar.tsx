@@ -1,12 +1,15 @@
 import React from 'react';
-import { firstTeamObject, substituteObject } from '../../assets/interfaces';
+import {
+  firstTeamObject,
+  rosterObject,
+  substituteObject,
+} from '../../assets/interfaces';
 import BenchPlayerCard from './BenchPlayerCard';
 
 interface benchProps {
   allPositions: string[];
-  firstTeam: firstTeamObject;
-  substitutes: substituteObject;
-  setSubstitutes: React.Dispatch<React.SetStateAction<substituteObject>>;
+  roster: rosterObject;
+  setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
   currentPosition: string;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,9 +17,8 @@ interface benchProps {
 
 export default function BenchBar({
   allPositions,
-  firstTeam,
-  substitutes,
-  setSubstitutes,
+  roster,
+  setRoster,
   currentPosition,
   setCurrentPosition,
   setAddPlayerModal,
@@ -38,7 +40,7 @@ export default function BenchBar({
   const substituteOrder = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];
   const substituteCards = substituteOrder.map((subNum) => (
     <BenchPlayerCard
-      subPlayer={substitutes[subNum]}
+      subPlayer={roster['substitutes'][subNum]}
       subNum={subNum}
       setCurrentPosition={setCurrentPosition}
       setAddPlayerModal={setAddPlayerModal}

@@ -1,3 +1,8 @@
+export interface rosterObject {
+  firstTeam: firstTeamObject;
+  substitutes: substituteObject;
+}
+
 export interface firstTeamObject {
   [key: string | number]: playerObject;
 }

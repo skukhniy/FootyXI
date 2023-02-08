@@ -2,13 +2,13 @@ import React from 'react';
 import '../../styles/formations.css';
 import { formationPositions } from '../../assets/formationsData';
 import PlayerIcon from './PlayerIcon';
-import { firstTeamObject } from '../../assets/interfaces';
+import { rosterObject } from '../../assets/interfaces';
 
 interface formationProps {
   formation: string;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
-  firstTeam: firstTeamObject;
+  roster: rosterObject;
 }
 
 export default function FormationUi(props: formationProps) {
@@ -23,7 +23,7 @@ export default function FormationUi(props: formationProps) {
       position={position}
       setAddPlayerModal={props.setAddPlayerModal}
       setCurrentPosition={props.setCurrentPosition}
-      firstTeam={props.firstTeam}
+      roster={props.roster}
     />
   ));
 

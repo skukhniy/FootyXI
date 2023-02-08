@@ -1,12 +1,12 @@
 import React from 'react';
 import SearchResultPlayerCard from './SearchResultPlayerCard';
-import { firstTeamObject } from '../../../assets/interfaces';
+import { rosterObject } from '../../../assets/interfaces';
 
 interface resultProps {
   searchResults: Array<playerObjectInfo>;
   currentPosition: string;
-  firstTeam: firstTeamObject;
-  setFirstTeam: React.Dispatch<React.SetStateAction<firstTeamObject>>;
+  roster: rosterObject;
+  setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
 }
 
 interface playerObjectInfo {
@@ -24,16 +24,16 @@ interface playerObjectInfo {
 export default function SearchResults({
   searchResults,
   currentPosition,
-  firstTeam,
-  setFirstTeam,
+  roster,
+  setRoster,
 }: resultProps) {
   const playerCards = searchResults.map((playerInfo) => (
     <div>
       <SearchResultPlayerCard
         playerInfo={playerInfo}
         currentPosition={currentPosition}
-        firstTeam={firstTeam}
-        setFirstTeam={setFirstTeam}
+        roster={roster}
+        setRoster={setRoster}
       />
       <hr className="w-full mb-8" />
     </div>

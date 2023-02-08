@@ -1,21 +1,21 @@
 import React from 'react';
 import { formations } from '../../assets/formationsData';
-import { firstTeamObject } from '../../assets/interfaces';
+import { firstTeamObject, rosterObject } from '../../assets/interfaces';
 import { formationPositions } from '../../assets/formationsData';
 
 interface formationProps {
   formation: string;
   setFormation: React.Dispatch<React.SetStateAction<string>>;
-  setFirstTeam: React.Dispatch<React.SetStateAction<firstTeamObject>>;
-  firstTeam: firstTeamObject;
+  setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
+  roster: rosterObject;
   createFirstTeamTemplate: (formationArray: any) => firstTeamObject;
 }
 
 export default function SBsideBar({
   formation,
   setFormation,
-  setFirstTeam,
-  firstTeam,
+  setRoster,
+  roster,
   createFirstTeamTemplate,
 }: formationProps) {
   const formationOptions = formations.map((formation) => (
@@ -29,7 +29,9 @@ export default function SBsideBar({
       formationPositions[
         `f_${e.target.value}` as keyof typeof formationPositions
       ];
-    setFirstTeam(createFirstTeamTemplate(formationArray));
+    let tempRoster = { ...roster } as rosterObject;
+    tempRoster['firstTeam'] = createFirstTeamTemplate(formationArray);
+    setRoster(tempRoster);
   };
 
   return (
