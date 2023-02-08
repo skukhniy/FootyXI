@@ -8,27 +8,20 @@ interface benchPlayerProps {
   reservePlayer: playerObject;
 }
 
-export default function BenchPlayerCard({
+export default function ReservePlayerCard({
   setAddPlayerModal,
   roster,
   setRoster,
   reservePlayer,
 }: benchPlayerProps) {
   const removeSub = () => {
-    // setRoster((roster) => ({
-    //   ...roster,
-    //   substitutes: {
-    //     ...roster.reserves,
-    //     [subNum]: {
-    //       name: '',
-    //       position: '',
-    //       ovr: 0,
-    //       player_id: undefined,
-    //       player_photo: undefined,
-    //     },
-    //   },
-    // }));
-    console.log(roster);
+    console.log('removeSub');
+    setRoster((roster) => ({
+      ...roster,
+      reserves: roster.reserves.filter(
+        (player) => player.name !== reservePlayer.name
+      ),
+    }));
   };
 
   return (
