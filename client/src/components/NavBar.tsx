@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../assets/Logo Assets/Asset 11@4x.png';
 
 export default function NavBar() {
   const [openNav, setNav] = useState(false);
@@ -8,8 +9,9 @@ export default function NavBar() {
   return (
     <nav className="bg-green-800 p-3 text-white flex justify-between h-15 sticky top-0 z-[60]">
       {/* Logo */}
-      <div className="ml-5" id="logo">
-        <h1>
+      <div className="ml-5 flex justify-center items-center" id="logo">
+        <img src={logo} className="w-10"></img>
+        <h1 className="ml-3">
           <a href="/">FootyXI</a>
         </h1>
       </div>

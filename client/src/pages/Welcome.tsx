@@ -1,11 +1,13 @@
 import React from 'react';
+import logo from '../assets/Logo Assets/Asset 11@4x.png';
 import { Link } from 'react-router-dom';
 
 export default function Welcome() {
   return (
     <div className="h-[90%] flex flex-col justify-center self-center">
       {/* Header */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 flex flex-col items-center">
+        <img src={logo} className="mb-5 w-36"></img>
         <h1 className="text-6xl font-bold mb-5 mt-1">Welcome to FootyXI</h1>
         <p className="text-lg">Create a squad that is true to you.</p>
       </div>
