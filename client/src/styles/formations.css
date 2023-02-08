@@ -363,3 +363,39 @@
     grid-column: 4;
   }
 }
+
+.f_523 {
+  & .st {
+    grid-column: 4;
+  }
+  & .lw {
+    grid-column: 1;
+  }
+  & .rw {
+    grid-column: 7;
+  }
+  & .lcm {
+    grid-column: 3;
+  }
+  & .rcm {
+    grid-column: 5;
+  }
+  & .lwb {
+    grid-column: 1;
+  }
+  & .rwb {
+    grid-column: 7;
+  }
+  & .lcb {
+    grid-column: 2;
+  }
+  & .cb {
+    grid-column: 4;
+  }
+  & .rcb {
+    grid-column: 6;
+  }
+  & .gk {
+    grid-column: 4;
+  }
+}
