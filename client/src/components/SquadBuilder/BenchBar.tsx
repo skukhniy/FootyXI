@@ -69,14 +69,18 @@ export default function BenchBar({
     </div>
   );
 
-  const reserveCards = roster.reserves.map((player) => (
-    <ReservePlayerCard
-      setAddPlayerModal={setAddPlayerModal}
-      roster={roster}
-      setRoster={setRoster}
-      reservePlayer={player}
-    />
-  ));
+  const reserveCards = roster.reserves.map((player) => {
+    if (player.name !== '') {
+      return (
+        <ReservePlayerCard
+          setAddPlayerModal={setAddPlayerModal}
+          roster={roster}
+          setRoster={setRoster}
+          reservePlayer={player}
+        />
+      );
+    }
+  });
 
   return (
     <div className=" bg-gray-600 text-white p-2">

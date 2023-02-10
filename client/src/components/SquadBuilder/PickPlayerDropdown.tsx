@@ -26,7 +26,7 @@ export default function PickPlayerDropdown({
     }
   );
   const reserveOptions = roster.reserves.map((player) => (
-    <option>{player.name}</option>
+    <option value={player.name}>{player.name}</option>
   ));
 
   const firstTeamOptions = Object.keys(roster.firstTeam).map((mapPosition) => {
@@ -58,8 +58,24 @@ export default function PickPlayerDropdown({
       let tempPlayer = tempRoster.substitutes[subNum];
       tempRoster.substitutes[subNum] = tempRoster.firstTeam[position];
       tempRoster.firstTeam[position] = tempPlayer;
+      setRoster(tempRoster);
+    } else if (swapType === 'Reserves') {
+      let tempPlayer = tempRoster.reserves.filter((player) => {
+        console.log(player.name);
+        console.log(e.target.value);
+        return player.name === e.target.value;
+      });
+      let tempReserves = tempRoster.reserves.filter((player) => {
+        player.name !== e.target.value;
+      });
+      tempRoster.reserves = tempReserves;
+      tempRoster.reserves.push(tempRoster.firstTeam[position]);
+      console.log('tempPlayer');
+      console.log(tempPlayer[0]);
+      tempRoster.firstTeam[position] = tempPlayer[0];
 
       console.log(tempRoster);
+
       setRoster(tempRoster);
     }
   };
