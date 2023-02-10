@@ -32,9 +32,13 @@ export default function PickPlayerDropdown({
   const firstTeamOptions = Object.keys(roster.firstTeam).map((mapPosition) => {
     if (roster.firstTeam[mapPosition].name !== '') {
       if (mapPosition === position) {
-        return <option selected>{roster.firstTeam[position].name}</option>;
+        console.log('mapPosition === position');
+        console.log(roster);
+        return <option selected>{roster.firstTeam[mapPosition].name}</option>;
       } else {
-        return <option>{roster.firstTeam[position].name}</option>;
+        console.log('mapPosition !== position');
+        console.log(roster);
+        return <option>{roster.firstTeam[mapPosition].name}</option>;
       }
     }
   });
