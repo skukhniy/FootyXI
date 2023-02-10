@@ -37,16 +37,6 @@ export default function PlayerIcon({
         </p>
         <img className=" " src={kitIcon}></img>
       </div>
-      {/* 
-      {roster['firstTeam'][position]['name'] ? (
-        <p>{roster['firstTeam'][position]['name']}</p>
-      ) : (
-        <PickPlayerDropdown
-          roster={roster}
-          setRoster={setRoster}
-          position={position}
-        />
-      )} */}
 
       <PickPlayerDropdown
         roster={roster}
@@ -55,11 +45,11 @@ export default function PlayerIcon({
       />
 
       {roster['firstTeam'][position]['ovr'] > 0 ? (
-        <p className="relative bottom-12 left-9 font-bold ">
+        <p className="relative bottom-12 left-9 font-bold mb-[-24px]">
           {roster['firstTeam'][position]['ovr']}
         </p>
       ) : (
-        ''
+        <p></p>
       )}
 
       {/* <select>
