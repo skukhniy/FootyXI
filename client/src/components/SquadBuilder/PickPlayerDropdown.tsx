@@ -32,17 +32,9 @@ export default function PickPlayerDropdown({
   const firstTeamOptions = Object.keys(roster.firstTeam).map((mapPosition) => {
     if (roster.firstTeam[mapPosition].name !== '') {
       const playerName = roster.firstTeam[mapPosition].name;
-      if (mapPosition === position) {
-        return (
-          <option selected value={`${mapPosition}-${playerName}`}>
-            {playerName}
-          </option>
-        );
-      } else {
-        return (
-          <option value={`${mapPosition}-${playerName}`}>{playerName}</option>
-        );
-      }
+      return (
+        <option value={`${mapPosition}-${playerName}`}>{playerName}</option>
+      );
     }
   });
 
@@ -81,6 +73,7 @@ export default function PickPlayerDropdown({
       let tempPlayer = tempRoster.firstTeam[tempPosition];
       tempRoster.firstTeam[tempPosition] = tempRoster.firstTeam[position];
       tempRoster.firstTeam[position] = tempPlayer;
+      console.log(tempRoster);
       setRoster(tempRoster);
     }
   };
@@ -90,6 +83,7 @@ export default function PickPlayerDropdown({
       <select
         onChange={(e) => swapPlayers(e)}
         className=" text-center bg-gray-500"
+        value={`${position}-${roster.firstTeam[position].name}`}
       >
         <option>Pick Player</option>
         <optgroup label="Substitutes">{subOptions}</optgroup>

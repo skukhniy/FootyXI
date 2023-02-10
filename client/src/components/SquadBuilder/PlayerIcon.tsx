@@ -51,15 +51,6 @@ export default function PlayerIcon({
       ) : (
         <p></p>
       )}
-
-      {/* <select>
-        <option selected></option>
-        <option>Kane</option>
-        <option>Son</option>
-        <option>Deki</option>
-        <option>Romero</option>
-        <option>Porro</option>
-      </select> */}
     </div>
   );
 }
