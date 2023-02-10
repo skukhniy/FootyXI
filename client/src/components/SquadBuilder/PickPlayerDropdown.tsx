@@ -83,9 +83,14 @@ export default function PickPlayerDropdown({
       <select
         onChange={(e) => swapPlayers(e)}
         className=" text-center bg-gray-500"
-        value={`${position}-${roster.firstTeam[position].name}`}
+        placeholder="Pick Player"
+        value={
+          roster.firstTeam[position].name !== ''
+            ? `${position}-${roster.firstTeam[position].name}`
+            : 'Pick Player'
+        }
       >
-        <option>Pick Player</option>
+        <option disabled>Pick Player</option>
         <optgroup label="Substitutes">{subOptions}</optgroup>
 
         <optgroup label="Reserves">{reserveOptions}</optgroup>
