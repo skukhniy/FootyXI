@@ -86,6 +86,7 @@ export default function SquadBuilder() {
           setAddPlayerModal={setAddPlayerModal}
           setCurrentPosition={setCurrentPosition}
           roster={roster}
+          setRoster={setRoster}
         />
       </div>
       <BenchBar

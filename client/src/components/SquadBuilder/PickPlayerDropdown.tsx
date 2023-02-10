@@ -14,16 +14,17 @@ export default function PickPlayerDropdown({
 }: PickPlayerProps) {
   const currentPlayer = roster.firstTeam[position];
 
-  const substituteOrder = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];
-  const subOptions = substituteOrder.map((subNum) => {
-    if (roster.substitutes[subNum].name !== '') {
-      return (
-        <option value={`${subNum}-${roster.substitutes[subNum].name}`}>
-          {roster.substitutes[subNum].name}
-        </option>
-      );
+  const subOptions = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'].map(
+    (subNum) => {
+      if (roster.substitutes[subNum].name !== '') {
+        return (
+          <option value={`${subNum}-${roster.substitutes[subNum].name}`}>
+            {roster.substitutes[subNum].name}
+          </option>
+        );
+      }
     }
-  });
+  );
   const reserveOptions = roster.reserves.map((player) => (
     <option>{player.name}</option>
   ));
@@ -42,13 +43,16 @@ export default function PickPlayerDropdown({
   };
 
   const swapPlayers = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const tempRoster = roster;
+    const tempRoster = { ...roster };
     const swapType = getPlayerType(e);
     if (swapType === 'Substitutes') {
       const subNum = e.target.value.split('-')[0];
-      tempRoster.firstTeam[position] = roster.substitutes[subNum];
-      tempRoster.substitutes[subNum] = roster.firstTeam[position];
-      setRoster((tempRoster) => ({ ...tempRoster }));
+      let tempPlayer = tempRoster.substitutes[subNum];
+      tempRoster.substitutes[subNum] = tempRoster.firstTeam[position];
+      tempRoster.firstTeam[position] = tempPlayer;
+
+      console.log(tempRoster);
+      setRoster(tempRoster);
     }
   };
 
