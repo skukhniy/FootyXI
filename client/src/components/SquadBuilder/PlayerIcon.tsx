@@ -41,8 +41,13 @@ export default function PlayerIcon({
       {roster['firstTeam'][position]['name'] ? (
         <p>{roster['firstTeam'][position]['name']}</p>
       ) : (
-        <PickPlayerDropdown roster={roster} setRoster={setRoster} />
+        <PickPlayerDropdown
+          roster={roster}
+          setRoster={setRoster}
+          position={position}
+        />
       )}
+
       {roster['firstTeam'][position]['ovr'] > 0 ? (
         <p className="relative bottom-12 left-9 font-bold ">
           {roster['firstTeam'][position]['ovr']}
