@@ -39,7 +39,11 @@ export default function AddPlayer(props: AddPlayerProps) {
                   setRoster={props.setRoster}
                 />
               ) : (
-                ''
+                <div>
+                  <p className="text-red-500">
+                    No Results, please try another name
+                  </p>
+                </div>
               )}
             </div>
           </div>

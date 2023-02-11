@@ -10,6 +10,7 @@ import {
   firstTeamObject,
   playerObject,
   substituteObject,
+  rosterObject,
 } from '../assets/interfaces';
 
 export default function SquadBuilder() {
@@ -261,7 +262,7 @@ export default function SquadBuilder() {
         player_photo: 'https://cdn.sofifa.net/players/258/781/23_60.png',
       },
     ],
-  });
+  } as rosterObject);
 
   return (
     <div className="flex flex-col">

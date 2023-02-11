@@ -27,6 +27,22 @@ export default function SearchResults({
   roster,
   setRoster,
 }: resultProps) {
+  const areThereResults = () => {
+    if (searchResults.length === 0) {
+      console.log('there are no results');
+      return false;
+    } else {
+      return true;
+    }
+  };
+  console.log(searchResults);
+
+  const errorDiv = (
+    <div>
+      <p className="text-red-500">No Results</p>
+    </div>
+  );
+
   const playerCards = searchResults.map((playerInfo) => (
     <div>
       <SearchResultPlayerCard
@@ -50,7 +66,11 @@ export default function SearchResults({
         <span>Add</span>
       </div>
       <hr className="w-full"></hr>
-      <div className=" h-[500px] overflow-y-scroll pt-5">{playerCards}</div>
+      {areThereResults() ? (
+        <div className=" h-[500px] overflow-y-scroll pt-5">{playerCards}</div>
+      ) : (
+        errorDiv
+      )}
     </div>
   );
 }
