@@ -47,13 +47,21 @@ export default function SBsideBar({
     setMenuOpen(!menuOpen);
   };
 
+  const clearStartingXI = () => {
+    if (window.confirm('Are you sure you want to remove your starting 11?')) {
+      const tempRoster = { ...roster };
+      const formationArray =
+        formationPositions[`f_${formation}` as keyof typeof formationPositions];
+      tempRoster.firstTeam = createFirstTeamTemplate(formationArray);
+      setRoster(tempRoster);
+    }
+  };
+
   const clearSquad = () => {
     if (window.confirm('Are you sure you want to delete your squad?')) {
       setRoster(rosterTemplate);
     }
   };
-
-  // <div className='delete-button' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.onCancel(item) } } />
 
   return (
     <div
@@ -77,7 +85,10 @@ export default function SBsideBar({
           <button className="bg-gray-500 rounded-lg text-white px-2 py-1 w-36 mb-4">
             Save Squad
           </button>
-          <button className="bg-gray-300 px-2 py-1 rounded-lg w-36 mb-4">
+          <button
+            onClick={clearStartingXI}
+            className="bg-gray-300 px-2 py-1 rounded-lg w-36 mb-4"
+          >
             Clear Starting 11
           </button>
           <button
