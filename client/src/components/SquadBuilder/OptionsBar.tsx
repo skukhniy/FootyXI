@@ -48,8 +48,12 @@ export default function SBsideBar({
   };
 
   const clearSquad = () => {
-    setRoster(rosterTemplate);
+    if (window.confirm('Are you sure you want to delete your squad?')) {
+      setRoster(rosterTemplate);
+    }
   };
+
+  // <div className='delete-button' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.onCancel(item) } } />
 
   return (
     <div
