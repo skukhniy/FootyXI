@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { formations } from '../../assets/formationsData';
-import { firstTeamObject, rosterObject } from '../../assets/interfaces';
+import {
+  firstTeamObject,
+  rosterObject,
+  playerObject,
+  substituteObject,
+} from '../../assets/interfaces';
 import { formationPositions } from '../../assets/formationsData';
 
 interface formationProps {
@@ -9,6 +14,7 @@ interface formationProps {
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
   roster: rosterObject;
   createFirstTeamTemplate: (formationArray: any) => firstTeamObject;
+  rosterTemplate: rosterObject;
 }
 
 export default function SBsideBar({
@@ -16,9 +22,10 @@ export default function SBsideBar({
   setFormation,
   setRoster,
   roster,
+  rosterTemplate,
   createFirstTeamTemplate,
 }: formationProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
 
   const formationOptions = formations.map((formation) => (
     <option value={formation}>{formation}</option>
@@ -38,6 +45,10 @@ export default function SBsideBar({
 
   const slideMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const clearSquad = () => {
+    setRoster(rosterTemplate);
   };
 
   return (
@@ -65,7 +76,10 @@ export default function SBsideBar({
           <button className="bg-gray-300 px-2 py-1 rounded-lg w-36 mb-4">
             Clear Starting 11
           </button>
-          <button className="bg-red-300 text-white px-2 py-1 rounded-lg w-36">
+          <button
+            onClick={clearSquad}
+            className="bg-red-300 text-white px-2 py-1 rounded-lg w-36"
+          >
             Clear Squad
           </button>
         </div>
