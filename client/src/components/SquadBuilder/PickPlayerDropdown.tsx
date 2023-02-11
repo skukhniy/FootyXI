@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { rosterObject } from '../../assets/interfaces';
+import {
+  rosterObject,
+  firstTeamObject,
+  substituteObject,
+} from '../../assets/interfaces';
 
 interface PickPlayerProps {
   roster: rosterObject;
@@ -14,6 +18,25 @@ export default function PickPlayerDropdown({
 }: PickPlayerProps) {
   const currentPlayer = roster.firstTeam[position];
 
+  const areTherePlayers = (playerList: firstTeamObject | substituteObject) => {
+    let checkBoolean = false;
+    Object.keys(playerList).forEach((playerPos) => {
+      if (playerList[playerPos].name !== '') {
+        checkBoolean = true;
+      }
+    });
+    return checkBoolean;
+  };
+
+  const areThereReserves = () => {
+    let checkBoolean = false;
+    roster.reserves.forEach((player) => {
+      if (player.name !== '') {
+        checkBoolean = true;
+      }
+    });
+    return checkBoolean;
+  };
   const subOptions = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'].map(
     (subNum) => {
       if (roster.substitutes[subNum].name !== '') {
@@ -91,14 +114,25 @@ export default function PickPlayerDropdown({
         }
       >
         <option disabled>Pick Player</option>
-        <optgroup label="Substitutes">{subOptions}</optgroup>
+        {areTherePlayers(roster.firstTeam) ? (
+          <optgroup label="First Team">{firstTeamOptions}</optgroup>
+        ) : (
+          ''
+        )}
+        {areTherePlayers(roster.substitutes) ? (
+          <optgroup label="Substitutes">{subOptions}</optgroup>
+        ) : (
+          ''
+        )}
 
-        <optgroup label="Reserves">{reserveOptions}</optgroup>
-
-        <optgroup label="First Team">{firstTeamOptions}</optgroup>
-
+        {areThereReserves() ? (
+          <optgroup label="Reserves">{reserveOptions}</optgroup>
+        ) : (
+          ''
+        )}
+        {/* 
         <optgroup label=""></optgroup>
-        <option>+ Add Player</option>
+        <option>+ Add Player</option> */}
       </select>
     </div>
   );
