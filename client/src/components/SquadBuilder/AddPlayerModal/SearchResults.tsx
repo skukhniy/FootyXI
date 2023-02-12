@@ -3,7 +3,7 @@ import SearchResultPlayerCard from './SearchResultPlayerCard';
 import { rosterObject } from '../../../assets/interfaces';
 
 interface resultProps {
-  searchResults: Array<playerObjectInfo> | Array<string>;
+  searchResults: Array<playerObjectInfo>;
   currentPosition: string;
   roster: rosterObject;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
@@ -28,7 +28,7 @@ export default function SearchResults({
   setRoster,
 }: resultProps) {
   const areThereResults = () => {
-    if (searchResults.length === 0 || searchResults[0] === 'no results') {
+    if (searchResults.length === 0) {
       console.log('there are no results');
       return false;
     } else {

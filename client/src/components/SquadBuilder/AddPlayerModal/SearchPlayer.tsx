@@ -4,6 +4,7 @@ interface searchProps {
   setSearchResults: React.Dispatch<React.SetStateAction<any>>;
   keywords: string;
   setKeywords: React.Dispatch<React.SetStateAction<string>>;
+  setNoResultCheck: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function getErrorMessage(error: unknown) {
@@ -24,7 +25,7 @@ export default function SearchPlayer(props: searchProps) {
       const jsonData = await response.json();
       props.setSearchResults(jsonData);
       if (jsonData.length === 0) {
-        props.setSearchResults(['no results']);
+        props.setNoResultCheck(true);
       }
     } catch (error) {
       console.log(getErrorMessage(error));

@@ -14,12 +14,18 @@ interface AddPlayerProps {
 export default function AddPlayer(props: AddPlayerProps) {
   const [searchResults, setSearchResults] = useState([]);
   const [keywords, setKeywords] = useState('');
+  const [noResultCheck, setNoResultCheck] = useState(false);
   const toggleModal = () => {
     props.setAddPlayerModal(false);
   };
 
-  const hasResults = Object.keys(searchResults).length > 0;
-
+  const hasResults = () => {
+    if (Object.keys(searchResults).length > 0 || noResultCheck) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return (
     <>
       {/* overlaying modal container, goes over the entire screen */}
@@ -31,12 +37,13 @@ export default function AddPlayer(props: AddPlayerProps) {
             {/* content goes in this div */}
             <div>
               <SearchPlayer
+                setNoResultCheck={setNoResultCheck}
                 setSearchResults={setSearchResults}
                 keywords={keywords}
                 setKeywords={setKeywords}
               />
               {/* conditional render for the search results section */}
-              {hasResults || searchResults[0] === 'no results' ? (
+              {hasResults() ? (
                 <SearchResults
                   searchResults={searchResults}
                   currentPosition={props.currentPosition}
