@@ -13,6 +13,7 @@ interface AddPlayerProps {
 
 export default function AddPlayer(props: AddPlayerProps) {
   const [searchResults, setSearchResults] = useState([]);
+  const [keywords, setKeywords] = useState('');
   const toggleModal = () => {
     props.setAddPlayerModal(false);
   };
@@ -29,9 +30,13 @@ export default function AddPlayer(props: AddPlayerProps) {
           <div className="contentChild">
             {/* content goes in this div */}
             <div>
-              <SearchPlayer setSearchResults={setSearchResults} />
+              <SearchPlayer
+                setSearchResults={setSearchResults}
+                keywords={keywords}
+                setKeywords={setKeywords}
+              />
               {/* conditional render for the search results section */}
-              {hasResults ? (
+              {hasResults || searchResults[0] === 'no results' ? (
                 <SearchResults
                   searchResults={searchResults}
                   currentPosition={props.currentPosition}
@@ -39,11 +44,7 @@ export default function AddPlayer(props: AddPlayerProps) {
                   setRoster={props.setRoster}
                 />
               ) : (
-                <div>
-                  <p className="text-red-500">
-                    No Results, please try another name
-                  </p>
-                </div>
+                ''
               )}
             </div>
           </div>

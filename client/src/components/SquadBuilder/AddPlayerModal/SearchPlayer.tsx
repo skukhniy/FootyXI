@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 // TODO: figure out what type to place. Kept getting an error so just put any for now. Probably should be array[playerpropobjs] or smth.
 interface searchProps {
   setSearchResults: React.Dispatch<React.SetStateAction<any>>;
+  keywords: string;
+  setKeywords: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function getErrorMessage(error: unknown) {
@@ -9,10 +11,8 @@ function getErrorMessage(error: unknown) {
   return String(error);
 }
 export default function SearchPlayer(props: searchProps) {
-  const [keywords, setKeywords] = useState('');
-
   const cleanQueryString = () => {
-    return keywords.replace(' ', '+').trim();
+    return props.keywords.replace(' ', '+').trim();
   };
 
   const getSearchResults = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,6 +23,9 @@ export default function SearchPlayer(props: searchProps) {
       );
       const jsonData = await response.json();
       props.setSearchResults(jsonData);
+      if (jsonData.length === 0) {
+        props.setSearchResults(['no results']);
+      }
     } catch (error) {
       console.log(getErrorMessage(error));
     }
@@ -42,7 +45,7 @@ export default function SearchPlayer(props: searchProps) {
         placeholder="Search"
         aria-label="Search"
         aria-describedby="button-addon2"
-        onChange={(e) => setKeywords(e.target.value)}
+        onChange={(e) => props.setKeywords(e.target.value)}
       />
       <button
         className="btn px-6 py-2.5 bg-green-500 text-white font-medium text-xs

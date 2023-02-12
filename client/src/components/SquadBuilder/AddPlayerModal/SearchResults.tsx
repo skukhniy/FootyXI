@@ -3,7 +3,7 @@ import SearchResultPlayerCard from './SearchResultPlayerCard';
 import { rosterObject } from '../../../assets/interfaces';
 
 interface resultProps {
-  searchResults: Array<playerObjectInfo>;
+  searchResults: Array<playerObjectInfo> | Array<string>;
   currentPosition: string;
   roster: rosterObject;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
@@ -28,7 +28,7 @@ export default function SearchResults({
   setRoster,
 }: resultProps) {
   const areThereResults = () => {
-    if (searchResults.length === 0) {
+    if (searchResults.length === 0 || searchResults[0] === 'no results') {
       console.log('there are no results');
       return false;
     } else {
@@ -56,18 +56,20 @@ export default function SearchResults({
   ));
   return (
     <div id="searchResults">
-      <div className="grid grid-cols-7 text-center pb-1">
-        <span></span>
-        <span className="">Name</span>
-        <span>Position</span>
-        <span>Overall</span>
-        <span>Potential</span>
-        <span>Nation</span>
-        <span>Add</span>
-      </div>
-      <hr className="w-full"></hr>
       {areThereResults() ? (
-        <div className=" h-[500px] overflow-y-scroll pt-5">{playerCards}</div>
+        <div>
+          <div className="grid grid-cols-7 text-center pb-1">
+            <span></span>
+            <span className="">Name</span>
+            <span>Position</span>
+            <span>Overall</span>
+            <span>Potential</span>
+            <span>Nation</span>
+            <span>Add</span>
+          </div>
+          <hr className="w-full"></hr>
+          <div className=" h-[500px] overflow-y-scroll pt-5">{playerCards}</div>
+        </div>
       ) : (
         errorDiv
       )}
