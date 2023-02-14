@@ -6,7 +6,9 @@ interface playerInfoProp {
   currentPosition: string;
   roster: rosterObject;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
+  setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 interface playerObjectInfo {
   best_position: string;
   club_name: string;
@@ -24,6 +26,7 @@ export default function SearchResultPlayerCard({
   roster,
   setRoster,
   currentPosition,
+  setAddPlayerModal,
 }: playerInfoProp) {
   const addPlayerInfo = (playerType: string) => {
     let rosterCopy: rosterObject = roster;
@@ -54,6 +57,7 @@ export default function SearchResultPlayerCard({
     } else {
       addPlayerInfo('firstTeam');
     }
+    setAddPlayerModal(false);
   };
 
   return (

@@ -49,6 +49,7 @@ export default function AddPlayer(props: AddPlayerProps) {
                   currentPosition={props.currentPosition}
                   roster={props.roster}
                   setRoster={props.setRoster}
+                  setAddPlayerModal={props.setAddPlayerModal}
                 />
               ) : (
                 ''

@@ -7,6 +7,7 @@ interface resultProps {
   currentPosition: string;
   roster: rosterObject;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
+  setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface playerObjectInfo {
@@ -26,6 +27,7 @@ export default function SearchResults({
   currentPosition,
   roster,
   setRoster,
+  setAddPlayerModal,
 }: resultProps) {
   const areThereResults = () => {
     if (searchResults.length === 0) {
@@ -50,6 +52,7 @@ export default function SearchResults({
         currentPosition={currentPosition}
         roster={roster}
         setRoster={setRoster}
+        setAddPlayerModal={setAddPlayerModal}
       />
       <hr className="w-full mb-8" />
     </div>
