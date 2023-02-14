@@ -81,8 +81,10 @@ export default function PickPlayerDropdown({
       let tempPlayer = tempRoster.reserves.filter((player) => {
         return player.name === e.target.value;
       });
-      let tempReserves = tempRoster.reserves.filter((player) => {
-        player.name !== e.target.value;
+      console.log('TEMP ROSTER CHECK');
+      console.log(roster);
+      let tempReserves = roster.reserves.filter((player) => {
+        return player.name !== e.target.value;
       });
       tempRoster.reserves = tempReserves;
       tempRoster.reserves.push(tempRoster.firstTeam[position]);
