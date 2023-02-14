@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   firstTeamObject,
   rosterObject,
@@ -24,6 +24,8 @@ export default function BenchBar({
   setCurrentPosition,
   setAddPlayerModal,
 }: benchProps) {
+  const [draggingPlayer, setDraggingPlayer] = useState('');
+
   //-- Substitute Player Funcs --//
 
   const substituteOrder = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];
@@ -35,6 +37,8 @@ export default function BenchBar({
       setAddPlayerModal={setAddPlayerModal}
       setRoster={setRoster}
       roster={roster}
+      draggingPlayer={draggingPlayer}
+      setDraggingPlayer={setDraggingPlayer}
     />
   ));
 

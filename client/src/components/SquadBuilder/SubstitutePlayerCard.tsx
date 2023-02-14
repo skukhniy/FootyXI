@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { playerObject, rosterObject } from '../../assets/interfaces';
 
 interface benchPlayerProps {
@@ -8,6 +8,8 @@ interface benchPlayerProps {
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
   roster: rosterObject;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
+  draggingPlayer: string;
+  setDraggingPlayer: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function BenchPlayerCard({
@@ -17,6 +19,8 @@ export default function BenchPlayerCard({
   setAddPlayerModal,
   roster,
   setRoster,
+  draggingPlayer,
+  setDraggingPlayer,
 }: benchPlayerProps) {
   const removeSub = () => {
     setRoster((roster) => ({
@@ -35,8 +39,39 @@ export default function BenchPlayerCard({
     console.log(roster);
   };
 
+  const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    console.log('DRAGGING PLAYER');
+    console.log(roster.substitutes[subNum].name);
+    setDraggingPlayer(subNum);
+  };
+  const dragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    console.log('DRAGGED PLAYER ENTERING:');
+    console.log(`${subNum} - ${roster.substitutes[subNum].name}`);
+  };
+  const dropFunc = (e: React.DragEvent<HTMLDivElement>) => {
+    console.log(`Dragged Over Component = ${subNum}`);
+    console.log(draggingPlayer);
+    console.log(
+      `Dropped player === ${draggingPlayer} - ${roster.substitutes[draggingPlayer].name}`
+    );
+    const tempRoster = { ...roster };
+    let tempPlayer = tempRoster.substitutes[draggingPlayer];
+    tempRoster.substitutes[draggingPlayer] = tempRoster.substitutes[subNum];
+    tempRoster.substitutes[subNum] = tempPlayer;
+    setRoster(tempRoster);
+  };
+
   let playerHTML = (
-    <div className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1">
+    <div
+      onDragStart={(e) => dragStart(e)}
+      onDragEnter={(e) => dragEnter(e)}
+      onDragOver={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+      }}
+      onDrop={(e) => dropFunc(e)}
+      className="flex flex-col border-r pr-7 pl-4 pb-1 pt-1"
+    >
       <button
         onClick={() => removeSub()}
         className="relative self-end text-gray-400 font-light hover:cursor-pointer"
