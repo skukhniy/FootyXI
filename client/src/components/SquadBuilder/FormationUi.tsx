@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/formations.css';
 import { formationPositions } from '../../assets/formationsData';
 import PlayerIcon from './PlayerIcon';
@@ -13,6 +13,7 @@ interface formationProps {
 }
 
 export default function FormationUi(props: formationProps) {
+  const [draggedOverPos, setDragOver] = useState('' as string);
   const formationKey = `f_${props.formation}`;
 
   // grab array of positions for the current formation
@@ -26,6 +27,8 @@ export default function FormationUi(props: formationProps) {
       setCurrentPosition={props.setCurrentPosition}
       roster={props.roster}
       setRoster={props.setRoster}
+      setDragOver={setDragOver}
+      draggedOverPos={draggedOverPos}
     />
   ));
 
