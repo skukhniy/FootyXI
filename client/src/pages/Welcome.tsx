@@ -37,7 +37,7 @@ export default function Welcome() {
       </div>
       <div
         id="homeBackground"
-        className="bg-black h-[90%] opacity-20 z-0 w-full absolute"
+        className="bg-black h-[92%] opacity-20 z-0 w-full absolute"
       ></div>
     </div>
   );

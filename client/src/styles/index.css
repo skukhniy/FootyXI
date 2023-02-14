@@ -13,7 +13,7 @@ body,
 #homeBackground {
   background: url('../assets/Logo Assets/Asset 11@4x.png') no-repeat center
     center fixed;
-  background-size: contain;
+  background-size: cover;
 }
 
 h1 {
