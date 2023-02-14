@@ -15,7 +15,7 @@ export default function Welcome() {
       {/* Nav Buttons */}
       <div className="flex flex-col self-center justify-center mb-10 mt-5 md:flex-row z-10">
         <Link to="/signup">
-          <button className=" btn-primary w-28 self-center mb-5 md:mr-5 md:mb-0">
+          <button className=" btn-primary w-28 hover:scale-110 self-center mb-5 md:mr-5 md:mb-0">
             Sign Up
           </button>
         </Link>
