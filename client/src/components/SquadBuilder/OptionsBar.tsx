@@ -39,7 +39,29 @@ export default function SBsideBar({
         `f_${e.target.value}` as keyof typeof formationPositions
       ];
     let tempRoster = { ...roster } as rosterObject;
-    tempRoster['firstTeam'] = createFirstTeamTemplate(formationArray);
+    let newFirstTeam = {} as firstTeamObject;
+    let noEqualPositions: Array<string> = Object.keys(roster.firstTeam).filter(
+      (position) => {
+        return formationArray.includes(position) !== true;
+      }
+    );
+
+    formationArray.forEach((position: string) => {
+      if (tempRoster.firstTeam.hasOwnProperty(position)) {
+        newFirstTeam[position] = tempRoster.firstTeam[position];
+      } else {
+        newFirstTeam[position] =
+          roster.firstTeam[noEqualPositions.pop() as string];
+        // newFirstTeam[position] = {
+        //   name: '',
+        //   position: '',
+        //   ovr: 0,
+        //   player_id: undefined,
+        //   player_photo: undefined,
+        // };
+      }
+    });
+    tempRoster['firstTeam'] = newFirstTeam;
     setRoster(tempRoster);
   };
 
