@@ -65,7 +65,7 @@ export default function SBsideBar({
 
   return (
     <div
-      className={`w-[200px] bg-gray-200 py-3 flex h-[500px] absolute transition-all duration-500 ${
+      className={`w-[200px] bg-gray-200 py-3 flex h-[500px] absolute transition-all duration-500 z-20 ${
         menuOpen ? 'left-[-180px]' : 'left-0'
       }`}
     >
