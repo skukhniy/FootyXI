@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom';
 
 export default function Welcome() {
   return (
-    <div className="h-[90%] flex flex-col justify-center self-center">
+    <div className=" flex flex-col  self-center">
       {/* Header */}
-      <div className="text-center mb-10 flex flex-col items-center">
-        <img src={logo} className="mb-5 w-36"></img>
-        <h1 className="text-6xl font-bold mb-5 mt-1">Welcome to FootyXI</h1>
+      <div className="text-center mb-10 flex flex-col items-center z-20 mt-16">
+        {/* Logo */}
+        <img src={logo} className="mb-5 w-56"></img>
+        <h1 className="text-7xl font-bold mb-5 mt-1">Welcome to FootyXI</h1>
         <p className="text-lg">Create a squad that is true to you.</p>
       </div>
       {/* Nav Buttons */}
-      <div className="flex flex-col self-center justify-center mb-10 mt-5 md:flex-row">
+      <div className="flex flex-col self-center justify-center mb-10 mt-5 md:flex-row z-10">
         <Link to="/signup">
           <button className=" btn-primary w-28 self-center mb-5 md:mr-5 md:mb-0">
             Sign Up
@@ -25,7 +26,7 @@ export default function Welcome() {
         </Link>
       </div>
       {/* login */}
-      <div className="text-center mt-5">
+      <div className="text-center mt-5 z-10">
         <p>
           If you already have an account
           <span> </span>
@@ -34,6 +35,10 @@ export default function Welcome() {
           </a>
         </p>
       </div>
+      <div
+        id="homeBackground"
+        className="bg-black h-[90%] opacity-20 z-0 w-full absolute"
+      ></div>
     </div>
   );
 }
