@@ -11,8 +11,8 @@ body,
 }
 
 #homeBackground {
-  background: url('../assets/Logo Assets/Asset 11@4x.png') no-repeat center
-    center fixed;
+  background: url('../assets/Logo Assets/logo-LG.png') no-repeat center center
+    fixed;
   background-size: cover;
 }
 

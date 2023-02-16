@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/Logo Assets/Asset 11@4x.png';
+// import logoBWfrom '../assets/Logo Assets/logo-BW-LG.png';
 import { Link } from 'react-router-dom';
 
 export default function Welcome() {

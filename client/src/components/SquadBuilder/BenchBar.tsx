@@ -73,7 +73,7 @@ export default function BenchBar({
     </div>
   );
 
-  const reserveCards = roster.reserves.map((player) => {
+  const reserveCards = roster.reserves.map((player, index) => {
     if (player.name !== '') {
       return (
         <ReservePlayerCard
@@ -81,6 +81,9 @@ export default function BenchBar({
           roster={roster}
           setRoster={setRoster}
           reservePlayer={player}
+          draggingPlayer={draggingPlayer}
+          setDraggingPlayer={setDraggingPlayer}
+          playerIndex={index.toString()}
         />
       );
     }

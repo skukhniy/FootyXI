@@ -8,7 +8,7 @@ interface benchPlayerProps {
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
   roster: rosterObject;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
-  draggingPlayer: string;
+  draggingPlayer: string | number;
   setDraggingPlayer: React.Dispatch<React.SetStateAction<string>>;
 }
 
