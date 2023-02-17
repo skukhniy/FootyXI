@@ -391,6 +391,7 @@
   }
   & .cb {
     grid-column: 4;
+    margin-bottom: 30px;
   }
   & .rcb {
     grid-column: 6;
