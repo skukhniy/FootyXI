@@ -14,6 +14,10 @@ interface benchProps {
   currentPosition: string;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
+  draggingPlayer: { position: string; type: string };
+  setDraggingPlayer: React.Dispatch<
+    React.SetStateAction<{ position: string; type: string }>
+  >;
 }
 
 export default function BenchBar({
@@ -23,9 +27,9 @@ export default function BenchBar({
   currentPosition,
   setCurrentPosition,
   setAddPlayerModal,
+  draggingPlayer,
+  setDraggingPlayer,
 }: benchProps) {
-  const [draggingPlayer, setDraggingPlayer] = useState('');
-
   //-- Substitute Player Funcs --//
 
   const substituteOrder = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];

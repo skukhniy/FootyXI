@@ -18,6 +18,10 @@ export default function SquadBuilder() {
   const [formation, setFormation] = useState('442');
   const [showAddPlayer, setAddPlayerModal] = useState(false);
   const [currentPosition, setCurrentPosition] = useState('');
+  const [draggingPlayer, setDraggingPlayer] = useState({
+    position: '',
+    type: '',
+  });
 
   const templatePlayerObj = {
     name: '',
@@ -292,6 +296,8 @@ export default function SquadBuilder() {
           setCurrentPosition={setCurrentPosition}
           roster={roster}
           setRoster={setRoster}
+          draggingPlayer={draggingPlayer}
+          setDraggingPlayer={setDraggingPlayer}
         />
       </div>
       <BenchBar
@@ -301,6 +307,8 @@ export default function SquadBuilder() {
         currentPosition={currentPosition}
         setCurrentPosition={setCurrentPosition}
         setAddPlayerModal={setAddPlayerModal}
+        draggingPlayer={draggingPlayer}
+        setDraggingPlayer={setDraggingPlayer}
       />
     </div>
   );

@@ -10,10 +10,13 @@ interface formationProps {
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
   roster: rosterObject;
+  draggingPlayer: { position: string; type: string };
+  setDraggingPlayer: React.Dispatch<
+    React.SetStateAction<{ position: string; type: string }>
+  >;
 }
 
 export default function FormationUi(props: formationProps) {
-  const [draggedOverPos, setDragOver] = useState('' as string);
   const formationKey = `f_${props.formation}`;
 
   // grab array of positions for the current formation
@@ -27,8 +30,8 @@ export default function FormationUi(props: formationProps) {
       setCurrentPosition={props.setCurrentPosition}
       roster={props.roster}
       setRoster={props.setRoster}
-      setDragOver={setDragOver}
-      draggedOverPos={draggedOverPos}
+      draggingPlayer={props.draggingPlayer}
+      setDraggingPlayer={props.setDraggingPlayer}
     />
   ));
 

@@ -9,8 +9,10 @@ interface positionProps {
   setCurrentPosition: React.Dispatch<React.SetStateAction<string>>;
   roster: rosterObject;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
-  draggedOverPos: string;
-  setDragOver: React.Dispatch<React.SetStateAction<string>>;
+  draggingPlayer: { position: string; type: string };
+  setDraggingPlayer: React.Dispatch<
+    React.SetStateAction<{ position: string; type: string }>
+  >;
 }
 
 export default function PlayerIcon({
@@ -19,14 +21,40 @@ export default function PlayerIcon({
   setRoster,
   setAddPlayerModal,
   setCurrentPosition,
-  setDragOver,
-  draggedOverPos,
+  draggingPlayer,
+  setDraggingPlayer,
 }: positionProps) {
   const positionTitle = position.toUpperCase();
+
+  const firstTeamPlayerSwap = () => {
+    const tempRoster = { ...roster };
+    let tempPlayer = tempRoster.firstTeam[draggingPlayer.position];
+    tempRoster.firstTeam[draggingPlayer.position] =
+      tempRoster.firstTeam[position];
+    tempRoster.firstTeam[position] = tempPlayer;
+    setRoster(tempRoster);
+  };
+  const reservePlayerSwap = () => {
+    const tempRoster = { ...roster };
+    let tempPlayer = tempRoster.reserves[Number(draggingPlayer.position)];
+    tempRoster.reserves[Number(draggingPlayer.position)] =
+      tempRoster.firstTeam[position];
+    tempRoster.firstTeam[position] = tempPlayer;
+    setRoster(tempRoster);
+  };
+  const subPlayerSwap = () => {
+    const tempRoster = { ...roster };
+    let tempPlayer = tempRoster.substitutes[draggingPlayer.position];
+    tempRoster.substitutes[draggingPlayer.position] =
+      tempRoster.firstTeam[position];
+    tempRoster.firstTeam[position] = tempPlayer;
+    setRoster(tempRoster);
+  };
+
   const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
     console.log('DRAGGING PLAYER');
     console.log(roster.firstTeam[position].name);
-    setDragOver(position);
+    setDraggingPlayer({ position: position, type: 'First Team' });
   };
   const dragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     console.log('DRAGGED PLAYER ENTERING:');
@@ -34,14 +62,9 @@ export default function PlayerIcon({
   };
   const dropFunc = (e: React.DragEvent<HTMLDivElement>) => {
     console.log(`Dragged Over Component = ${position}`);
-    console.log(
-      `Dropped player === ${draggedOverPos} - ${roster.firstTeam[draggedOverPos].name}`
-    );
-    const tempRoster = { ...roster };
-    let tempPlayer = tempRoster.firstTeam[draggedOverPos];
-    tempRoster.firstTeam[draggedOverPos] = tempRoster.firstTeam[position];
-    tempRoster.firstTeam[position] = tempPlayer;
-    setRoster(tempRoster);
+    if (draggingPlayer.type === 'First Team') firstTeamPlayerSwap();
+    if (draggingPlayer.type === 'Substitute') subPlayerSwap();
+    if (draggingPlayer.type === 'Reserve') reservePlayerSwap();
   };
 
   return (

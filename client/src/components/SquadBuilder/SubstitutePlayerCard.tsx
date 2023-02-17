@@ -8,8 +8,10 @@ interface benchPlayerProps {
   setAddPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
   roster: rosterObject;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
-  draggingPlayer: string | number;
-  setDraggingPlayer: React.Dispatch<React.SetStateAction<string>>;
+  draggingPlayer: { position: string; type: string };
+  setDraggingPlayer: React.Dispatch<
+    React.SetStateAction<{ position: string; type: string }>
+  >;
 }
 
 export default function BenchPlayerCard({
@@ -39,10 +41,35 @@ export default function BenchPlayerCard({
     console.log(roster);
   };
 
+  const reservePlayerSwap = () => {
+    const tempRoster = { ...roster };
+    let tempPlayer = tempRoster.reserves[Number(draggingPlayer.position)];
+    tempRoster.reserves[Number(draggingPlayer.position)] =
+      tempRoster.substitutes[subNum];
+    tempRoster.substitutes[subNum] = tempPlayer;
+    setRoster(tempRoster);
+  };
+  const subPlayerSwap = () => {
+    const tempRoster = { ...roster };
+    let tempPlayer = tempRoster.substitutes[draggingPlayer.position];
+    tempRoster.substitutes[draggingPlayer.position] =
+      tempRoster.substitutes[subNum];
+    tempRoster.substitutes[subNum] = tempPlayer;
+    setRoster(tempRoster);
+  };
+  const firstTeamPlayerSwap = () => {
+    const tempRoster = { ...roster };
+    let tempPlayer = tempRoster.firstTeam[draggingPlayer.position];
+    tempRoster.firstTeam[draggingPlayer.position] =
+      tempRoster.substitutes[subNum];
+    tempRoster.substitutes[subNum] = tempPlayer;
+    setRoster(tempRoster);
+  };
+
   const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
     console.log('DRAGGING PLAYER');
     console.log(roster.substitutes[subNum].name);
-    setDraggingPlayer(subNum);
+    setDraggingPlayer({ position: subNum, type: 'Substitute' });
   };
   const dragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     console.log('DRAGGED PLAYER ENTERING:');
@@ -51,14 +78,10 @@ export default function BenchPlayerCard({
   const dropFunc = (e: React.DragEvent<HTMLDivElement>) => {
     console.log(`Dragged Over Component = ${subNum}`);
     console.log(draggingPlayer);
-    console.log(
-      `Dropped player === ${draggingPlayer} - ${roster.substitutes[draggingPlayer].name}`
-    );
-    const tempRoster = { ...roster };
-    let tempPlayer = tempRoster.substitutes[draggingPlayer];
-    tempRoster.substitutes[draggingPlayer] = tempRoster.substitutes[subNum];
-    tempRoster.substitutes[subNum] = tempPlayer;
-    setRoster(tempRoster);
+
+    if (draggingPlayer.type === 'Substitute') subPlayerSwap();
+    if (draggingPlayer.type === 'Reserve') reservePlayerSwap();
+    if (draggingPlayer.type === 'First Team') firstTeamPlayerSwap();
   };
 
   let playerHTML = (
