@@ -9,11 +9,27 @@ body,
   height: 100%;
   width: 100%;
 }
+@layer base {
+  html {
+    font-family: 'Industry-Medium', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+  }
+}
+
+#welcomePage {
+}
 
 #homeBackground {
   background: url('../assets/Logo Assets/logo-LG.png') no-repeat center center
     fixed;
   background-size: cover;
+}
+
+#navBar {
+  font-family: 'Abolition Test', sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 h1 {
@@ -28,7 +44,8 @@ h3 {
 
 /* default button classes */
 .btn-primary {
-  @apply bg-green-700 p-3 px-6 pt-2 text-white font-bold rounded-full focus:outline-none focus:ring-4 focus:ring-green-300;
+  @apply bg-green-700 p-3 px-6 text-white font-bold rounded-full focus:outline-none focus:ring-4 focus:ring-green-300;
+  /* font-family: 'Abolition Test', sans-serif; */
 }
 
 .btn-default {

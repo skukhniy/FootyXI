@@ -82,7 +82,10 @@ export default function ReservePlayerCard({
             {reservePlayer.position}
           </p>
         </div>
-        <img src={reservePlayer.player_photo}></img>
+        <img
+          src={reservePlayer.player_photo}
+          className="hover:cursor-grab active:cursor-grabbing"
+        ></img>
         <h1 className="font" id="OVR">
           {reservePlayer.ovr}
         </h1>

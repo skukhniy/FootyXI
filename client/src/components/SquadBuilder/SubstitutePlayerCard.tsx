@@ -85,7 +85,10 @@ export default function BenchPlayerCard({
             {subPlayer.position}
           </p>
         </div>
-        <img src={subPlayer.player_photo}></img>
+        <img
+          src={subPlayer.player_photo}
+          className="hover:cursor-grab active:cursor-grabbing"
+        ></img>
         <h1 className="font" id="OVR">
           {subPlayer.ovr}
         </h1>

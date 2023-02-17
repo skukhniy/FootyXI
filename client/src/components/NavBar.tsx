@@ -9,7 +9,10 @@ export default function NavBar() {
     setNav(!openNav);
   };
   return (
-    <nav className="bg-green-800 p-3 text-white flex justify-between h-15 sticky top-0 z-[60]">
+    <nav
+      id="navBar"
+      className="bg-green-800 p-3 text-white flex justify-between h-15 sticky top-0 z-[60]"
+    >
       {/* Logo */}
       <div className="ml-5 flex justify-center items-center" id="logo">
         {/* <img src={logo} className="w-10 mr-1"></img> */}
@@ -17,19 +20,19 @@ export default function NavBar() {
           <img src={banner} className="w-52"></img>
         </Link>
         {/* <h1 className="ml-3">
-          <a href="/">FootyXI</a>
+          <a href="/">FOOtyXI</a>
         </h1> */}
       </div>
       {/* Menu */}
-      <div className="hidden md:flex self-center space-x-10">
-        <a href="/squads" className="hover:text-gray-300">
-          Squads
+      <div className="hidden md:flex self-center space-x-10 text-2xl">
+        <a href="/squads" className="hover:text-gray-300 mb-2">
+          S q u a d s
         </a>
         <a href="/builder" className="hover:text-gray-300">
-          Builder
+          B u i l d e r
         </a>
         <a href="/player-comparison" className="hover:text-gray-300">
-          Player Comparison
+          P l a y e r - C o m p a r i s o n
         </a>
       </div>
 
