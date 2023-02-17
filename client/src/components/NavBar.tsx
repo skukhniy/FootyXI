@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import banner from '../assets/Logo Assets/banner3.png';
 import logo from '../assets/Logo Assets/Asset 11@4x.png';
 import { Link } from 'react-router-dom';
+import LogoutButton from './Auth/LogoutButton';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function NavBar() {
   const [openNav, setNav] = useState(false);
@@ -34,6 +36,8 @@ export default function NavBar() {
         <a href="/player-comparison" className="hover:text-gray-300">
           P l a y e r - C o m p a r i s o n
         </a>
+
+        <LogoutButton />
       </div>
 
       {/* mobile menu */}
