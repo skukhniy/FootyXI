@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       domain={import.meta.env.VITE_AUTH0_DOMAIN}
       clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
       authorizationParams={{
-        redirect_uri: 'http://127.0.0.1:5173/profile',
+        redirect_uri: 'http://127.0.0.1:5173',
       }}
     >
       <App />

@@ -3,6 +3,7 @@ import React from 'react';
 
 const LogoutButton = () => {
   const { logout } = useAuth0();
+
   // prettier-ignore
   return (
     <button

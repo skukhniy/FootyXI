@@ -7,7 +7,10 @@ import LoginButton from '../components/Auth/LoginButton';
 import LogoutButton from '../components/Auth/LogoutButton';
 
 export default function Welcome() {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, isLoading } = useAuth0();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div id="welcomePage" className=" flex flex-col  self-center">

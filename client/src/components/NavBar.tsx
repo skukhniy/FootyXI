@@ -10,6 +10,7 @@ export default function NavBar() {
   const toggleMenu = () => {
     setNav(!openNav);
   };
+  const { isAuthenticated } = useAuth0();
   return (
     <nav
       id="navBar"
@@ -37,7 +38,7 @@ export default function NavBar() {
           P l a y e r - C o m p a r i s o n
         </a>
 
-        <LogoutButton />
+        {isAuthenticated ? <LogoutButton /> : ''}
       </div>
 
       {/* mobile menu */}
