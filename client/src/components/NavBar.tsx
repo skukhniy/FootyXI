@@ -31,7 +31,7 @@ export default function NavBar() {
         <a href="/squads" className="hover:text-gray-300 mb-2">
           S q u a d s
         </a>
-        <a href="/builder" className="hover:text-gray-300">
+        <a href="/squad-builder" className="hover:text-gray-300">
           B u i l d e r
         </a>
         <a href="/player-comparison" className="hover:text-gray-300">
