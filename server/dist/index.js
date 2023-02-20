@@ -21,8 +21,10 @@ dotenv_1.default.config();
 const port = process.env.port;
 // router variables
 const playersRouter = require('./routes/players');
+const squadsRouter = require('./routes/squads');
 // init routers
 app.use('/players', playersRouter);
+app.use('/squads', squadsRouter);
 app.get('/', (req, res) => {
     res.send('Express + TypeScript Servers');
 });

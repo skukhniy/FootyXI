@@ -21,9 +21,11 @@ const port = process.env.port;
 
 // router variables
 const playersRouter = require('./routes/players');
+const squadsRouter = require('./routes/squads');
 
 // init routers
 app.use('/players', playersRouter);
+app.use('/squads', squadsRouter);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Servers');

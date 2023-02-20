@@ -1,17 +1,16 @@
 CREATE TABLE squads
 (
-  PRIMARY KEY (id) UNIQUE,
-  user_id varchar NOT NULL,
-
+  id SERIAL PRIMARY KEY UNIQUE,
+  user_id varchar NOT NULL
 );
 
 CREATE TABLE firstTeam
 (
-  PRIMARY KEY (id) UNIQUE,
-  FOREIGN KEY (squad_id) REFERENCES squad(id) ON UPDATE CASCADE,
-  position varchar,
-  order int,
-  FOREIGN KEY (player_id) REFERENCES FIFA23(id) ON UPDATE CASCADE,
+  id SERIAL PRIMARY KEY UNIQUE,
+  position VARCHAR,
+  position_order INT,
+    FOREIGN KEY (squad_id) REFERENCES squads(id) ON UPDATE CASCADE,
+  FOREIGN KEY (player_id) REFERENCES FIFA23(id) ON UPDATE CASCADE
 );
 
 CREATE TABLE substitutes
