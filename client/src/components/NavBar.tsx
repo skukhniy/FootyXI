@@ -18,27 +18,23 @@ export default function NavBar() {
     >
       {/* Logo */}
       <div className="ml-5 flex justify-center items-center" id="logo">
-        {/* <img src={logo} className="w-10 mr-1"></img> */}
         <Link to="/">
           <img src={banner} className="w-52"></img>
         </Link>
-        {/* <h1 className="ml-3">
-          <a href="/">FOOtyXI</a>
-        </h1> */}
       </div>
       {/* Menu */}
       <div className="hidden md:flex self-center space-x-10 text-2xl">
-        <a href="/squads" className="hover:text-gray-300 mb-2">
+        {/* <a href="/squads" className="hover:text-gray-300 mb-2">
           S q u a d s
-        </a>
+        </a> */}
         <a href="/squad-builder" className="hover:text-gray-300">
-          B u i l d e r
+          S q u a d - B u i l d e r
         </a>
         <a href="/player-comparison" className="hover:text-gray-300">
           P l a y e r - C o m p a r i s o n
         </a>
 
-        {isAuthenticated ? <LogoutButton /> : ''}
+        {!isAuthenticated ? '' : <LogoutButton />}
       </div>
 
       {/* mobile menu */}

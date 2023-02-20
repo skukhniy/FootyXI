@@ -24,17 +24,17 @@ export default function Welcome() {
         <p className="text-lg">Create a squad that is true to you.</p>
       </div>
       {/* Nav Buttons */}
-      <div className="flex flex-col self-center justify-center mb-10 mt-5 md:flex-row md:justify-center z-10">
+      <div className="flex self-center justify-center mb-10 mt-5 md:flex-row md:justify-center z-10">
         {/* <LoginButton />
         <LogoutButton /> */}
         <button
           onClick={() => loginWithRedirect()}
-          className=" btn-primary w-28 hover:scale-110 self-center mb-5 md:mr-5 md:mb-0"
+          className=" btn-primary w-28 hover:scale-110 self-center mb-5 mr-5 mb-0"
         >
           Login
         </button>
         <Link to="/squad-builder">
-          <button className=" btn-primary hover:scale-110 w-30 md:ml-5 ">
+          <button className=" btn-primary hover:scale-110 w-30 ml-5 ">
             Guest
           </button>
         </Link>

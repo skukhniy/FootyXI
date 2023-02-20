@@ -6,7 +6,7 @@ export default function UserHome() {
   const { user } = useAuth0();
   return (
     <div>
-      <div className="text-center mt-5">
+      <div className="text-center mt-5 mb-5">
         <h1>Welcome back: {user?.nickname}</h1>
       </div>
 
