@@ -4,6 +4,7 @@ import SquadCard from '../components/UserHome/SquadCard';
 
 export default function UserHome() {
   const { user } = useAuth0();
+  console.log(user?.sub);
   return (
     <div>
       <div className="text-center mt-5 mb-5">
