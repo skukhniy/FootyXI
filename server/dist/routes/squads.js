@@ -7,5 +7,6 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const controller = require('../controllers/squadsController');
 router.get('/all', controller.getAllSquads);
+router.get('/specific', controller.getSpecificSquad);
 router.post('/new', controller.saveSquad);
 module.exports = router;
