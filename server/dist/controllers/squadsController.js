@@ -48,7 +48,6 @@ exports.saveSquad = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const squadID = addSquad.rows[0].id;
         addFirstTeam(firstTeam, squadID);
         addSubs(substitutes, squadID);
-        console.log(reserves);
         addReserves(reserves, squadID);
         res.json(squadID);
     }
@@ -57,15 +56,6 @@ exports.saveSquad = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 // save an updated squad
-// get all squads
-exports.getAllSquads = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        res.json('all squads');
-    }
-    catch (error) {
-        res.status(500).json({ message: getErrorMessage(error) });
-    }
-});
 const getSquadObject = (squad_id) => __awaiter(void 0, void 0, void 0, function* () {
     // query first team players and create matching first team object for front end
     const firstTeamObject = {};
@@ -106,6 +96,22 @@ exports.getSpecificSquad = (req, res) => __awaiter(void 0, void 0, void 0, funct
         const squadID = req.params.id;
         const roster = yield getSquadObject(Number(squadID));
         res.json(roster);
+    }
+    catch (error) {
+        res.status(500).json({ message: getErrorMessage(error) });
+    }
+});
+// get all squads
+exports.getAllSquads = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const squadIdQuery = yield db_1.pool.query('SELECT id from squads where user_id = $1', [req.params.user]);
+        console.log(squadIdQuery.rows);
+        const rosterArray = [];
+        for (const squadIdObject of squadIdQuery.rows) {
+            const roster = yield getSquadObject(squadIdObject.id);
+            rosterArray.push(roster);
+        }
+        res.json(rosterArray);
     }
     catch (error) {
         res.status(500).json({ message: getErrorMessage(error) });

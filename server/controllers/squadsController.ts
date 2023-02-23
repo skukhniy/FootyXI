@@ -79,7 +79,6 @@ exports.saveSquad = async (req: Request, res: Response) => {
     const squadID = addSquad.rows[0].id;
     addFirstTeam(firstTeam, squadID);
     addSubs(substitutes, squadID);
-    console.log(reserves);
     addReserves(reserves, squadID);
 
     res.json(squadID);
@@ -89,15 +88,6 @@ exports.saveSquad = async (req: Request, res: Response) => {
 };
 
 // save an updated squad
-
-// get all squads
-exports.getAllSquads = async (req: Request, res: Response) => {
-  try {
-    res.json('all squads');
-  } catch (error) {
-    res.status(500).json({ message: getErrorMessage(error) });
-  }
-};
 
 const getSquadObject = async (squad_id: Number) => {
   // query first team players and create matching first team object for front end
@@ -150,6 +140,25 @@ exports.getSpecificSquad = async (req: Request, res: Response) => {
     const squadID = req.params.id;
     const roster = await getSquadObject(Number(squadID));
     res.json(roster);
+  } catch (error) {
+    res.status(500).json({ message: getErrorMessage(error) });
+  }
+};
+
+// get all squads
+exports.getAllSquads = async (req: Request, res: Response) => {
+  try {
+    const squadIdQuery = await pool.query(
+      'SELECT id from squads where user_id = $1',
+      [req.params.user]
+    );
+    console.log(squadIdQuery.rows);
+    const rosterArray = [];
+    for (const squadIdObject of squadIdQuery.rows) {
+      const roster = await getSquadObject(squadIdObject.id);
+      rosterArray.push(roster);
+    }
+    res.json(rosterArray);
   } catch (error) {
     res.status(500).json({ message: getErrorMessage(error) });
   }
