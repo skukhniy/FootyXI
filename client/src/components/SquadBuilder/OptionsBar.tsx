@@ -7,6 +7,7 @@ import {
   substituteObject,
 } from '../../assets/interfaces';
 import { formationPositions } from '../../assets/formationsData';
+import SaveSquadBtn from './SaveSquadBtn';
 
 interface formationProps {
   formation: string;
@@ -26,6 +27,7 @@ export default function SBsideBar({
   createFirstTeamTemplate,
 }: formationProps) {
   const [menuOpen, setMenuOpen] = useState(true);
+  const [squadName, setSquadName] = useState('test');
 
   const formationOptions = formations.map((formation) => (
     <option value={formation}>{formation}</option>
@@ -93,6 +95,16 @@ export default function SBsideBar({
     >
       <div className="p-2 flex flex-col h-full items-center">
         <h1 className="text-center">Options</h1>
+
+        <div>
+          <h3 className="pt-5 text-center">Squad Name:</h3>
+          <input
+            className="w-32 px-2 py-1"
+            placeholder="Squad Name"
+            onChange={(e) => setSquadName(e.target.value)}
+            value={squadName}
+          />
+        </div>
         <div>
           <h3 className="pt-5">Formation:</h3>
           <select
@@ -104,9 +116,11 @@ export default function SBsideBar({
           </select>
         </div>
         <div className="mt-auto text-center">
-          <button className="bg-gray-500 rounded-lg text-white px-2 py-1 w-36 mb-4">
-            Save Squad
-          </button>
+          <SaveSquadBtn
+            roster={roster}
+            formation={formation}
+            squadName={squadName}
+          />
           <button
             onClick={clearStartingXI}
             className="bg-gray-300 px-2 py-1 rounded-lg w-36 mb-4"

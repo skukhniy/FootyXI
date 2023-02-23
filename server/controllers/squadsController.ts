@@ -147,7 +147,8 @@ const getSquadObject = async (squad_id: Number) => {
 // get a specific squad
 exports.getSpecificSquad = async (req: Request, res: Response) => {
   try {
-    const roster = await getSquadObject(14);
+    const squadID = req.params.id;
+    const roster = await getSquadObject(Number(squadID));
     res.json(roster);
   } catch (error) {
     res.status(500).json({ message: getErrorMessage(error) });

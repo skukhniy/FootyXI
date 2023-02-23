@@ -103,7 +103,8 @@ const getSquadObject = (squad_id) => __awaiter(void 0, void 0, void 0, function*
 // get a specific squad
 exports.getSpecificSquad = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const roster = yield getSquadObject(14);
+        const squadID = req.params.id;
+        const roster = yield getSquadObject(Number(squadID));
         res.json(roster);
     }
     catch (error) {
