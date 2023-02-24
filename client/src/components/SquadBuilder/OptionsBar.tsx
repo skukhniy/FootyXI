@@ -34,8 +34,10 @@ export default function SBsideBar({
   const emptyRoster = createEmptyRoster(formation);
 
   const formationOptions = formations.map((formationIterator) => {
+    console.log(`formation = ${formationIterator}`);
     if (formationIterator !== formation) {
-      return <option value={formation}>{formation}</option>;
+      console.log('regular formation');
+      return <option value={formationIterator}>{formationIterator}</option>;
     } else {
       return (
         <option selected value={formation}>
