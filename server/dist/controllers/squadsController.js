@@ -113,6 +113,21 @@ exports.getSpecificSquad = (req, res) => __awaiter(void 0, void 0, void 0, funct
 // get all squads
 exports.getAllSquads = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const squadIdQuery = yield db_1.pool.query('SELECT id from squads', []);
+        const rosterArray = [];
+        for (const squadIdObject of squadIdQuery.rows) {
+            const roster = yield getSquadObject(squadIdObject.id);
+            rosterArray.push(roster);
+        }
+        res.json(rosterArray);
+    }
+    catch (error) {
+        res.status(500).json({ message: getErrorMessage(error) });
+    }
+});
+// get all squads
+exports.getUsersSquads = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
         const squadIdQuery = yield db_1.pool.query('SELECT id from squads where user_id = $1', [req.params.user]);
         console.log(squadIdQuery.rows);
         const rosterArray = [];

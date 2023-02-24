@@ -160,6 +160,20 @@ exports.getSpecificSquad = async (req: Request, res: Response) => {
 // get all squads
 exports.getAllSquads = async (req: Request, res: Response) => {
   try {
+    const squadIdQuery = await pool.query('SELECT id from squads', []);
+    const rosterArray = [];
+    for (const squadIdObject of squadIdQuery.rows) {
+      const roster = await getSquadObject(squadIdObject.id);
+      rosterArray.push(roster);
+    }
+    res.json(rosterArray);
+  } catch (error) {
+    res.status(500).json({ message: getErrorMessage(error) });
+  }
+};
+// get all squads
+exports.getUsersSquads = async (req: Request, res: Response) => {
+  try {
     const squadIdQuery = await pool.query(
       'SELECT id from squads where user_id = $1',
       [req.params.user]
