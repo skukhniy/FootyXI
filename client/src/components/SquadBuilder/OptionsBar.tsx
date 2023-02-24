@@ -15,6 +15,8 @@ interface formationProps {
   setFormation: React.Dispatch<React.SetStateAction<string>>;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
   roster: rosterObject;
+  squadName: String;
+  setSquadName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function SBsideBar({
@@ -22,9 +24,10 @@ export default function SBsideBar({
   setFormation,
   setRoster,
   roster,
+  squadName,
+  setSquadName,
 }: formationProps) {
   const [menuOpen, setMenuOpen] = useState(true);
-  const [squadName, setSquadName] = useState('test');
 
   const emptyRoster = createEmptyRoster(formation);
 

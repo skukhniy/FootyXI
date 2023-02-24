@@ -9,7 +9,7 @@ interface squadCardProps {
 export default function ({ squad }: squadCardProps) {
   return (
     <div className="h-52 w-52 bg-green-200">
-      <Link to="/squad-builder">
+      <Link to={`/squad-builder/${squad.squadInfo.squad_id}`}>
         <div className="h-52 w-52 bg-green-200"></div>
       </Link>
       <h3 className="text-center">{squad.squadInfo.squad_name}</h3>

@@ -27,14 +27,14 @@ export default function NavBar() {
         {/* <a href="/squads" className="hover:text-gray-300 mb-2">
           S q u a d s
         </a> */}
-        <a href="/squad-builder" className="hover:text-gray-300">
+        <Link to="/squad-builder" className="hover:text-gray-300">
           S q u a d - B u i l d e r
-        </a>
-        <a href="/player-comparison" className="hover:text-gray-300">
+        </Link>
+        <Link to="/player-comparison" className="hover:text-gray-300">
           P l a y e r - C o m p a r i s o n
-        </a>
+        </Link>
 
-        {!isAuthenticated ? '' : <LogoutButton />}
+        {isAuthenticated ? <LogoutButton /> : ''}
       </div>
 
       {/* mobile menu */}

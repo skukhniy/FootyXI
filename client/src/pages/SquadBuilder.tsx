@@ -69,6 +69,8 @@ export default function SquadBuilder({ squadID }: SquadBuildProps) {
           setFormation={setFormation}
           setRoster={setRoster}
           roster={roster}
+          squadName={squadName}
+          setSquadName={setSquadName}
         />
         <FormationUi
           formation={formation}
