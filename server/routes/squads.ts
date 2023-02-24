@@ -14,4 +14,6 @@ router.post('/new', controller.saveSquad);
 
 router.put('/update/:id', controller.updateSquad);
 
+router.delete('/delete/:id', controller.deleteSquad);
+
 module.exports = router;

@@ -38,7 +38,7 @@ export default function UserHome({}) {
         <h1>Welcome back: {user?.nickname}</h1>
       </div>
 
-      <div className="bg-gray-100 flex flex-col items-center h-[80vh]">
+      <div className="bg-gray-100 flex flex-col items-center h-[80vh] overflow-auto">
         <h1 className="text-center mb-5 mt-5">Squads</h1>
         <div className="flex flex-wrap justify-around w-full">{squadCards}</div>
       </div>

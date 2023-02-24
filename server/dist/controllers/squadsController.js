@@ -76,6 +76,7 @@ exports.updateSquad = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         }
         // update reserve info
         const deleteReserves = yield db_1.pool.query('delete from reserves * where squad_id = $1', [squadID]);
+        console.log(reserves);
         addReserves(reserves, squadID);
         res.json(squadID);
     }
@@ -187,6 +188,22 @@ exports.getSquadIDs = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             squadIdArray.push(squadIdObject.id);
         }
         res.json(squadIdArray);
+    }
+    catch (error) {
+        res.status(500).json({ message: getErrorMessage(error) });
+    }
+});
+// delete specific squad
+exports.deleteSquad = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const squadID = req.params.id;
+        const deleteReserves = yield db_1.pool.query('delete from reserves where squad_id = $1', [squadID]);
+        const deleteSubs = yield db_1.pool.query('delete from substitutes where squad_id = $1', [squadID]);
+        const deleteFirstTeam = yield db_1.pool.query('delete from firstteam where squad_id = $1', [squadID]);
+        const deleteSquad = yield db_1.pool.query('delete from squads where id = $1', [
+            squadID,
+        ]);
+        res.json(`Squad : ${squadID} has been deleted`);
     }
     catch (error) {
         res.status(500).json({ message: getErrorMessage(error) });

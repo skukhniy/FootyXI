@@ -124,6 +124,7 @@ exports.updateSquad = async (req: Request, res: Response) => {
       'delete from reserves * where squad_id = $1',
       [squadID]
     );
+    console.log(reserves);
     addReserves(reserves, squadID);
 
     res.json(squadID);
@@ -254,6 +255,31 @@ exports.getSquadIDs = async (req: Request, res: Response) => {
       squadIdArray.push(squadIdObject.id);
     }
     res.json(squadIdArray);
+  } catch (error) {
+    res.status(500).json({ message: getErrorMessage(error) });
+  }
+};
+
+// delete specific squad
+exports.deleteSquad = async (req: Request, res: Response) => {
+  try {
+    const squadID = req.params.id;
+    const deleteReserves = await pool.query(
+      'delete from reserves where squad_id = $1',
+      [squadID]
+    );
+    const deleteSubs = await pool.query(
+      'delete from substitutes where squad_id = $1',
+      [squadID]
+    );
+    const deleteFirstTeam = await pool.query(
+      'delete from firstteam where squad_id = $1',
+      [squadID]
+    );
+    const deleteSquad = await pool.query('delete from squads where id = $1', [
+      squadID,
+    ]);
+    res.json(`Squad : ${squadID} has been deleted`);
   } catch (error) {
     res.status(500).json({ message: getErrorMessage(error) });
   }
