@@ -56,3 +56,15 @@ FROM squads
 inner join reserves on squads.id = reserves.squad_id
 inner join fifa23 on reserves.player_id = fifa23.id
 WHERE squads.id = 14;
+
+-- delete all squads
+DELETE FROM firstTeam *;
+DELETE FROM substitutes *;
+DELETE FROM reserves *;
+DELETE FROM squads *;
+
+-- get all squad ids for a user
+SELECT id from squads where user_id = $1
+
+-- get squad info
+SELECT squad_name, formation from squads where id = $1

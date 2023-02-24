@@ -19,3 +19,12 @@ export interface playerObject {
   player_id?: number;
   player_photo?: string;
 }
+export interface squadInfoObj {
+  squad_id: Number;
+  squad_name: String;
+  formation: String;
+}
+export interface squadObj {
+  squadInfo: squadInfoObj;
+  roster: rosterObject;
+}
