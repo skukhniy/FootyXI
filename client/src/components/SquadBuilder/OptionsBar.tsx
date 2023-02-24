@@ -26,6 +26,8 @@ export default function SBsideBar({
   const [menuOpen, setMenuOpen] = useState(true);
   const [squadName, setSquadName] = useState('test');
 
+  const emptyRoster = createEmptyRoster(formation);
+
   const formationOptions = formations.map((formation) => (
     <option value={formation}>{formation}</option>
   ));
@@ -51,13 +53,6 @@ export default function SBsideBar({
       } else {
         newFirstTeam[position] =
           roster.firstTeam[noEqualPositions.pop() as string];
-        // newFirstTeam[position] = {
-        //   name: '',
-        //   position: '',
-        //   ovr: 0,
-        //   player_id: undefined,
-        //   player_photo: undefined,
-        // };
       }
     });
     tempRoster['firstTeam'] = newFirstTeam;
@@ -71,14 +66,14 @@ export default function SBsideBar({
   const clearStartingXI = () => {
     if (window.confirm('Are you sure you want to remove your starting 11?')) {
       const tempRoster = { ...roster };
-      tempRoster.firstTeam = createEmptyRoster(formation).firstTeam;
+      tempRoster.firstTeam = emptyRoster.firstTeam;
       setRoster(tempRoster);
     }
   };
 
   const clearSquad = () => {
     if (window.confirm('Are you sure you want to delete your squad?')) {
-      setRoster(createEmptyRoster(formation));
+      setRoster(emptyRoster);
     }
   };
 

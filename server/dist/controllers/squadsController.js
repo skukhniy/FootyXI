@@ -83,11 +83,21 @@ const getSquadObject = (squad_id) => __awaiter(void 0, void 0, void 0, function*
     }
     // query reserves, can send as is
     const reservesQuery = yield db_1.pool.query('select known_as, best_position, overall, fifa23.id, image_link FROM squads inner join reserves on squads.id = reserves.squad_id inner join fifa23 on reserves.player_id = fifa23.id WHERE squads.id = $1', [squad_id]);
+    const reservesArray = [];
+    for (const player of reservesQuery.rows) {
+        reservesArray.push({
+            name: player.known_as,
+            position: player.best_position,
+            ovr: player.overall,
+            player_id: player.player_id,
+            player_photo: player.image_link,
+        });
+    }
     const squadInfo = yield db_1.pool.query('SELECT squad_name, formation from squads where id = $1', [squad_id]);
     const roster = {
         firstTeam: firstTeamObject,
         substitutes: substituteObject,
-        reserves: reservesQuery.rows,
+        reserves: reservesArray,
     };
     const returnObj = {
         squadInfo: {

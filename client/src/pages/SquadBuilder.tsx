@@ -44,6 +44,7 @@ export default function SquadBuilder({ squadID }: SquadBuildProps) {
     useEffect(() => {
       grabRoster();
     }, []);
+    console.log(roster.substitutes);
   }
   const formationArray =
     formationPositions[`f_${formation}` as keyof typeof formationPositions];
