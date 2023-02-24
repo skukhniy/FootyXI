@@ -59,17 +59,20 @@ exports.saveSquad = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.updateSquad = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { squadName, formation } = req.body[0];
+        console.log(squadName);
         const { firstTeam, substitutes, reserves } = req.body[1];
         const squadID = Number(req.params.id);
         // update squad info
         const updateSquadInfo = yield db_1.pool.query('UPDATE squads SET squad_name = $1, formation = $2 WHERE id = $3', [squadName, formation, squadID]);
+        console.log([squadName, formation, squadID]);
+        console.log(updateSquadInfo);
         // update firstTeamInfo
         for (const [positionOrder, position] of Object.keys(firstTeam).entries()) {
             const updatePlayer = yield db_1.pool.query('UPDATE firstteam SET player_id = $1, position = $2 WHERE squad_id = $3 AND position_order = $4', [firstTeam[position].player_id, position, squadID, positionOrder + 1]);
         }
         // update sub info
-        for (const [positionOrder, position] of Object.keys(substitutes).entries()) {
-            const updatePlayer = yield db_1.pool.query('UPDATE substitutes SET player_id = $1, position = $2 WHERE squad_id = $3', [substitutes[position].player_id, position, squadID]);
+        for (const position of Object.keys(substitutes)) {
+            const updateSubPlayer = yield db_1.pool.query('UPDATE substitutes SET player_id = $1 WHERE squad_id = $2 and position = $3', [substitutes[position].player_id, squadID, position]);
         }
         // update reserve info
         const deleteReserves = yield db_1.pool.query('delete from reserves * where squad_id = $1', [squadID]);
@@ -164,7 +167,6 @@ exports.getAllSquads = (req, res) => __awaiter(void 0, void 0, void 0, function*
 exports.getUsersSquads = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const squadIdQuery = yield db_1.pool.query('SELECT id from squads where user_id = $1', [req.params.user]);
-        console.log(squadIdQuery.rows);
         const rosterArray = [];
         for (const squadIdObject of squadIdQuery.rows) {
             const roster = yield getSquadObject(squadIdObject.id);

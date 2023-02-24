@@ -91,6 +91,7 @@ exports.saveSquad = async (req: Request, res: Response) => {
 exports.updateSquad = async (req: Request, res: Response) => {
   try {
     const { squadName, formation } = req.body[0];
+    console.log(squadName);
     const { firstTeam, substitutes, reserves } = req.body[1];
     const squadID = Number(req.params.id);
 
@@ -99,6 +100,8 @@ exports.updateSquad = async (req: Request, res: Response) => {
       'UPDATE squads SET squad_name = $1, formation = $2 WHERE id = $3',
       [squadName, formation, squadID]
     );
+    console.log([squadName, formation, squadID]);
+    console.log(updateSquadInfo);
 
     // update firstTeamInfo
     for (const [positionOrder, position] of Object.keys(firstTeam).entries()) {
@@ -109,12 +112,10 @@ exports.updateSquad = async (req: Request, res: Response) => {
     }
 
     // update sub info
-    for (const [positionOrder, position] of Object.keys(
-      substitutes
-    ).entries()) {
-      const updatePlayer = await pool.query(
-        'UPDATE substitutes SET player_id = $1, position = $2 WHERE squad_id = $3',
-        [substitutes[position].player_id, position, squadID]
+    for (const position of Object.keys(substitutes)) {
+      const updateSubPlayer = await pool.query(
+        'UPDATE substitutes SET player_id = $1 WHERE squad_id = $2 and position = $3',
+        [substitutes[position].player_id, squadID, position]
       );
     }
 
@@ -233,7 +234,6 @@ exports.getUsersSquads = async (req: Request, res: Response) => {
       'SELECT id from squads where user_id = $1',
       [req.params.user]
     );
-    console.log(squadIdQuery.rows);
     const rosterArray = [];
     for (const squadIdObject of squadIdQuery.rows) {
       const roster = await getSquadObject(squadIdObject.id);
