@@ -7,7 +7,7 @@ function getErrorMessage(error: unknown) {
   return String(error);
 }
 
-export default function UserHome() {
+export default function UserHome({}) {
   const { user } = useAuth0();
   const [squadsArray, setSquadsArray] = useState([]);
   const getSquads = async () => {

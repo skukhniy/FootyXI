@@ -141,3 +141,17 @@ exports.getUsersSquads = (req, res) => __awaiter(void 0, void 0, void 0, functio
         res.status(500).json({ message: getErrorMessage(error) });
     }
 });
+// get all squad IDS
+exports.getSquadIDs = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const squadIdQuery = yield db_1.pool.query('SELECT id from squads');
+        const squadIdArray = [];
+        for (const squadIdObject of squadIdQuery.rows) {
+            squadIdArray.push(squadIdObject.id);
+        }
+        res.json(squadIdArray);
+    }
+    catch (error) {
+        res.status(500).json({ message: getErrorMessage(error) });
+    }
+});

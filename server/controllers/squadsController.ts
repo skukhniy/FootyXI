@@ -189,3 +189,17 @@ exports.getUsersSquads = async (req: Request, res: Response) => {
     res.status(500).json({ message: getErrorMessage(error) });
   }
 };
+
+// get all squad IDS
+exports.getSquadIDs = async (req: Request, res: Response) => {
+  try {
+    const squadIdQuery = await pool.query('SELECT id from squads');
+    const squadIdArray = [];
+    for (const squadIdObject of squadIdQuery.rows) {
+      squadIdArray.push(squadIdObject.id);
+    }
+    res.json(squadIdArray);
+  } catch (error) {
+    res.status(500).json({ message: getErrorMessage(error) });
+  }
+};

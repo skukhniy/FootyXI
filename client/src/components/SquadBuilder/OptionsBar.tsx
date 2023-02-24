@@ -8,14 +8,13 @@ import {
 } from '../../assets/interfaces';
 import { formationPositions } from '../../assets/formationsData';
 import SaveSquadBtn from './SaveSquadBtn';
+import createEmptyRoster from '../../hooks/createEmptyRoster';
 
 interface formationProps {
   formation: string;
   setFormation: React.Dispatch<React.SetStateAction<string>>;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
   roster: rosterObject;
-  createFirstTeamTemplate: (formationArray: any) => firstTeamObject;
-  rosterTemplate: rosterObject;
 }
 
 export default function SBsideBar({
@@ -23,8 +22,6 @@ export default function SBsideBar({
   setFormation,
   setRoster,
   roster,
-  rosterTemplate,
-  createFirstTeamTemplate,
 }: formationProps) {
   const [menuOpen, setMenuOpen] = useState(true);
   const [squadName, setSquadName] = useState('test');
@@ -74,16 +71,14 @@ export default function SBsideBar({
   const clearStartingXI = () => {
     if (window.confirm('Are you sure you want to remove your starting 11?')) {
       const tempRoster = { ...roster };
-      const formationArray =
-        formationPositions[`f_${formation}` as keyof typeof formationPositions];
-      tempRoster.firstTeam = createFirstTeamTemplate(formationArray);
+      tempRoster.firstTeam = createEmptyRoster(formation).firstTeam;
       setRoster(tempRoster);
     }
   };
 
   const clearSquad = () => {
     if (window.confirm('Are you sure you want to delete your squad?')) {
-      setRoster(rosterTemplate);
+      setRoster(createEmptyRoster(formation));
     }
   };
 
