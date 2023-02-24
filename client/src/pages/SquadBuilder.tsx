@@ -18,6 +18,11 @@ interface SquadBuildProps {
   squadID: Number;
 }
 
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  return String(error);
+}
+
 export default function SquadBuilder({ squadID }: SquadBuildProps) {
   const [dbType, setDbType] = useState(null);
   const [formation, setFormation] = useState('442');
@@ -38,14 +43,17 @@ export default function SquadBuilder({ squadID }: SquadBuildProps) {
       setRoster(squadObj.roster);
       setFormation(squadObj.squadInfo.formation);
       setSquadName(squadObj.squadInfo.squad_name);
-    } catch (error) {}
+    } catch (error) {
+      console.error(getErrorMessage(error));
+    }
   };
-  if (squadID !== 0) {
-    useEffect(() => {
+
+  useEffect(() => {
+    if (squadID !== 0) {
       grabRoster();
-    }, []);
-    console.log(roster.substitutes);
-  }
+    }
+  }, []);
+
   const formationArray =
     formationPositions[`f_${formation}` as keyof typeof formationPositions];
   // const [allPositions, setAllPositions] = useState(formationArray);
@@ -71,6 +79,7 @@ export default function SquadBuilder({ squadID }: SquadBuildProps) {
           roster={roster}
           squadName={squadName}
           setSquadName={setSquadName}
+          squadID={squadID}
         />
         <FormationUi
           formation={formation}

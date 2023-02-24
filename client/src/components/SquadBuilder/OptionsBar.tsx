@@ -15,8 +15,9 @@ interface formationProps {
   setFormation: React.Dispatch<React.SetStateAction<string>>;
   setRoster: React.Dispatch<React.SetStateAction<rosterObject>>;
   roster: rosterObject;
-  squadName: String;
+  squadName: string;
   setSquadName: React.Dispatch<React.SetStateAction<string>>;
+  squadID: Number;
 }
 
 export default function SBsideBar({
@@ -26,14 +27,23 @@ export default function SBsideBar({
   roster,
   squadName,
   setSquadName,
+  squadID,
 }: formationProps) {
   const [menuOpen, setMenuOpen] = useState(true);
 
   const emptyRoster = createEmptyRoster(formation);
 
-  const formationOptions = formations.map((formation) => (
-    <option value={formation}>{formation}</option>
-  ));
+  const formationOptions = formations.map((formationIterator) => {
+    if (formationIterator !== formation) {
+      return <option value={formation}>{formation}</option>;
+    } else {
+      return (
+        <option selected value={formation}>
+          {formation}
+        </option>
+      );
+    }
+  });
 
   // updates FirstTeam template object as well
   const updateFormation = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -113,6 +123,7 @@ export default function SBsideBar({
             roster={roster}
             formation={formation}
             squadName={squadName}
+            squadID={squadID}
           />
           <button
             onClick={clearStartingXI}

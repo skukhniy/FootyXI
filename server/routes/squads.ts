@@ -12,4 +12,6 @@ router.get('/:id', controller.getSpecificSquad);
 
 router.post('/new', controller.saveSquad);
 
+router.post('/update/:id', controller.updateSquad);
+
 module.exports = router;

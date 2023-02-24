@@ -47,7 +47,10 @@ function App() {
             path="/"
             element={isAuthenticated ? <UserHome /> : <Welcome />}
           />
-          <Route path="/squad-builder" element={<SquadBuilder squadID={0} />} />
+          <Route
+            path="/squad-builder/"
+            element={<SquadBuilder squadID={0} />}
+          />
           {squadBuilderRoutes}
         </Routes>
       </BrowserRouter>

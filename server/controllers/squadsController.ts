@@ -87,6 +87,50 @@ exports.saveSquad = async (req: Request, res: Response) => {
   }
 };
 
+// update a squad
+exports.updateSquad = async (req: Request, res: Response) => {
+  try {
+    const { squadName, formation } = req.body[0];
+    const { firstTeam, substitutes, reserves } = req.body[1];
+    const squadID = Number(req.params.id);
+
+    // update squad info
+    const updateSquadInfo = await pool.query(
+      'UPDATE squads SET squad_name = $1, formation = $2 WHERE id = $3',
+      [squadName, formation, squadID]
+    );
+
+    // update firstTeamInfo
+    for (const [positionOrder, position] of Object.keys(firstTeam).entries()) {
+      const updatePlayer = await pool.query(
+        'UPDATE firstteam SET player_id = $1, position = $2 WHERE squad_id = $3 AND position_order = $4',
+        [firstTeam[position].player_id, position, squadID, positionOrder + 1]
+      );
+    }
+
+    // update sub info
+    for (const [positionOrder, position] of Object.keys(
+      substitutes
+    ).entries()) {
+      const updatePlayer = await pool.query(
+        'UPDATE substitutes SET player_id = $1, position = $2 WHERE squad_id = $3',
+        [substitutes[position].player_id, position, squadID]
+      );
+    }
+
+    // update reserve info
+    const deleteReserves = await pool.query(
+      'delete from reserves * where squad_id = $1',
+      [squadID]
+    );
+    addReserves(reserves, squadID);
+
+    res.json(squadID);
+  } catch (error) {
+    res.status(500).json({ message: getErrorMessage(error) });
+  }
+};
+
 // save an updated squad
 
 const getSquadObject = async (squad_id: Number) => {

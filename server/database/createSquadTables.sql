@@ -68,3 +68,17 @@ SELECT id from squads where user_id = $1
 
 -- get squad info
 SELECT squad_name, formation from squads where id = $1
+
+-- update squad
+
+-- get ids of first team in order
+select id from firstteam where squad_id = 28 ORDER BY position_order asc;
+
+-- update first team player
+UPDATE firstteam SET player_id = $1, position = $2 WHERE squad_id = $3 AND position_order = $4
+-- ex:
+UPDATE firstteam SET player_id = 1, position = 'st' WHERE squad_id = 28 AND position_order = 1;
+
+-- update reserve player
+
+-- 'UPDATE players SET player_name = $1, position = $2, team = $3 WHERE player_id = $4',
