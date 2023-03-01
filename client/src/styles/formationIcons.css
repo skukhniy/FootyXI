@@ -8,5 +8,15 @@
 }
 
 .positionIcon {
-  @apply w-5 h-5 rounded-full bg-white;
+  @apply w-5 h-5 rounded-full bg-white flex justify-center items-center;
+}
+
+.squadCard {
+  a {
+    & .f_442 {
+      & .gk {
+        grid-column: 4;
+      }
+    }
+  }
 }

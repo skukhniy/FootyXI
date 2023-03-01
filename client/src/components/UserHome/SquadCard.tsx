@@ -38,17 +38,19 @@ export default function ({ squad }: squadCardProps) {
     <div className={`${position} positionIcon`}></div>
   ));
 
+  const formationName = squad.squadInfo.formation.split('').join('-');
+
   return (
-    <div className="h-52 w-52 bg-green-200 flex flex-col ">
+    <div className="h-52 w-52 bg-green-200 flex flex-col squadCard">
       <Link to={`/squad-builder/${squad.squadInfo.squad_id}`}>
         <div
-          className={`h-52 w-52 bg-green-200 formationIcon f_${squad.squadInfo.formation}`}
+          className={`h-52 w-52 bg-green-600 formationIcon f_${squad.squadInfo.formation}`}
         >
           {positionIcons}
         </div>
       </Link>
       <h3 className="text-center">{squad.squadInfo.squad_name}</h3>
-      <h5 className="text-center">{squad.squadInfo.formation}</h5>
+      <h5 className="text-center">{formationName}</h5>
       <button
         onClick={() => deleteSquad()}
         className="bg-red-500 text-white px-3 py-2 rounded-full w-20 mt-2 self-center"
