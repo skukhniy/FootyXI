@@ -31,6 +31,7 @@ function App() {
   useEffect(() => {
     getSquadIDs();
   }, []);
+
   const squadBuilderRoutes = squadIDArray.map((squadID) => (
     <Route
       path={`/squad-builder/${squadID}`}

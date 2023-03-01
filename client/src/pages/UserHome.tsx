@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import SquadCard from '../components/UserHome/SquadCard';
+import '../styles/formationIcons.css';
 
 function getErrorMessage(error: unknown) {
   if (error instanceof Error) return error.message;

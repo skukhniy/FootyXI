@@ -1,0 +1,12 @@
+@tailwind components;
+@tailwind utilities;
+
+.formationIcon {
+  @apply grid;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.positionIcon {
+  @apply w-5 h-5 rounded-full bg-white;
+}

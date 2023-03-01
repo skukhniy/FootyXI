@@ -67,7 +67,10 @@ DELETE FROM squads *;
 SELECT id from squads where user_id = $1
 
 -- get squad info
-SELECT squad_name, formation from squads where id = $1
+UPDATE squads SET squad_name = $1, formation = $2 WHERE id = $3
+-- ex:
+UPDATE squads SET squad_name = '523 psql test', formation = '523' WHERE id = 28;
+
 
 -- update squad
 
@@ -78,6 +81,11 @@ select id from firstteam where squad_id = 28 ORDER BY position_order asc;
 UPDATE firstteam SET player_id = $1, position = $2 WHERE squad_id = $3 AND position_order = $4
 -- ex:
 UPDATE firstteam SET player_id = 1, position = 'st' WHERE squad_id = 28 AND position_order = 1;
+
+-- update sub player
+UPDATE substitutes SET player_id = $1 WHERE squad_id = $2 and position = $3
+--ex
+UPDATE substitutes SET player_id = 1 WHERE squad_id = 26 AND position = $3
 
 -- update reserve player
 

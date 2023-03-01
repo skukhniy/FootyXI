@@ -1,6 +1,7 @@
 import React from 'react';
 import { squadObj } from '../../assets/interfaces';
 import { Link } from 'react-router-dom';
+import { formationPositions } from '../../assets/formationsData';
 
 interface squadCardProps {
   squad: squadObj;
@@ -27,10 +28,24 @@ export default function ({ squad }: squadCardProps) {
     }
   };
 
+  const formationKey = `f_${squad.squadInfo.formation}`;
+
+  // grab array of positions for the current formation
+  const positionArray =
+    formationPositions[formationKey as keyof typeof formationPositions];
+
+  const positionIcons = positionArray.map((position) => (
+    <div className={`${position} positionIcon`}></div>
+  ));
+
   return (
-    <div className="h-52 w-52 bg-green-200 flex flex-col">
+    <div className="h-52 w-52 bg-green-200 flex flex-col ">
       <Link to={`/squad-builder/${squad.squadInfo.squad_id}`}>
-        <div className="h-52 w-52 bg-green-200"></div>
+        <div
+          className={`h-52 w-52 bg-green-200 formationIcon f_${squad.squadInfo.formation}`}
+        >
+          {positionIcons}
+        </div>
       </Link>
       <h3 className="text-center">{squad.squadInfo.squad_name}</h3>
       <h5 className="text-center">{squad.squadInfo.formation}</h5>

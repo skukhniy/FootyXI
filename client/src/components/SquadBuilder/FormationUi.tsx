@@ -22,6 +22,7 @@ export default function FormationUi(props: formationProps) {
   // grab array of positions for the current formation
   const positionArray =
     formationPositions[formationKey as keyof typeof formationPositions];
+
   // create each div for each player position in the fomration
   const playerDivs = positionArray.map((position) => (
     <PlayerIcon
