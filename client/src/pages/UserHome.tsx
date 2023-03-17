@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import SquadCard from '../components/UserHome/SquadCard';
 import '../styles/formationIcons.css';
+import AddSquad from '../components/UserHome/AddSquad';
 
 function getErrorMessage(error: unknown) {
   if (error instanceof Error) return error.message;
@@ -39,9 +40,12 @@ export default function UserHome({}) {
         <h1>Welcome back: {user?.nickname}</h1>
       </div>
 
-      <div className="bg-gray-100 flex flex-col items-center h-[80vh] overflow-auto">
+      <div className="flex flex-col items-center overflow-auto">
         <h1 className="text-center mb-5 mt-5">Squads</h1>
-        <div className="flex flex-wrap justify-around w-full">{squadCards}</div>
+        <div className="flex flex-wrap justify-around w-[75%]">
+          {squadCards}
+          <AddSquad />
+        </div>
       </div>
     </div>
   );

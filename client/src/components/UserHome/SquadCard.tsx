@@ -41,7 +41,7 @@ export default function ({ squad }: squadCardProps) {
   const formationName = squad.squadInfo.formation.split('').join('-');
 
   return (
-    <div className="h-52 w-52 bg-green-200 flex flex-col squadCard">
+    <div className="mt-5 flex flex-col squadCard">
       <Link to={`/squad-builder/${squad.squadInfo.squad_id}`}>
         <div
           className={`h-52 w-52 bg-green-600 formationIcon f_${squad.squadInfo.formation}`}

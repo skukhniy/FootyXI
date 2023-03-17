@@ -83,7 +83,7 @@ export default function SearchResultPlayerCard({
         onClick={addToTeam}
         className="rounded-full bg-green-400 inline-block h-8 w-8 text-white font-extrabold text-xl text-center"
       >
-        <p className="mb-1">+</p>
+        <p className="mb-1 mt-1">+</p>
       </button>
     </div>
   );
